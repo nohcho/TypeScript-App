@@ -35,9 +35,9 @@ export const addTodos = createAsyncThunk<Object, todoList>(
 //     "todos/patchTodos",
 //     async (todo, thunkAPI) => {
 //       try {
-//         const res = await axious.patch(``)
+//         const res = await axios.patch(``)
 //
-//         return await res;
+//         return await res.data;
 //       } catch (e) {
 //         return thunkAPI.rejectWithValue(e);
 //       }
@@ -78,7 +78,7 @@ export const todoSlice = createSlice({
         state.todo.push(action.payload);
         state.loading = false;
       })
-      .addCase(addTodos.pending, (state, action) => {
+      .addCase(addTodos.pending, (state) => {
         state.loading = true;
       })
       .addCase(
@@ -87,7 +87,7 @@ export const todoSlice = createSlice({
           state.todo = action.payload;
         }
       )
-      .addCase(deleteTodos.fulfilled, (state, action: any) => {
+      .addCase(deleteTodos.fulfilled, (state, action: PayloadAction< Number >) => {
         state.todo = state.todo.filter((elem) => {
           return elem.id !== action.payload;
         });

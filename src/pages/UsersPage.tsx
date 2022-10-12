@@ -12,6 +12,7 @@ import { useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/index";
 import { getUsers } from "../store/userSlice";
+import ToggleTheme from "../themes/ToggleTheme";
 
 function Users() {
   const dispatch = useAppDispatch();
@@ -67,5 +68,7 @@ function Users() {
     </Container>
   );
 }
+
+
 
 export default Users;
