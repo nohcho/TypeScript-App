@@ -1,11 +1,11 @@
 import { LoadingButton } from "@mui/lab";
 import {
-  List,
   ListItem,
   ListItemAvatar,
   Avatar,
   ListItemText,
   Paper,
+  Grid,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useCallback, useEffect } from "react";
@@ -41,33 +41,31 @@ function Users() {
   if (load) {
     return <LoadingButton size="large" fullWidth loading></LoadingButton>;
   }
+
   return (
     <Container sx={{ bgcolor: "var(--colors-bg)", height: "100%" }}>
-      <Paper style={styles.Paper}>
-        <Container sx={{ bgcolor: "white", width: "70%", margin: "auto" }}>
-          <List sx={{ width: "100%", maxWidth: 360 }}>
-            {list &&
-              list.map((user) => {
-                return (
-                  <ListItem alignItems="flex-start" key={user.id}>
-                    <ListItemAvatar>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src={require("../assets/avatar.png")}
-                      />
-                    </ListItemAvatar>
-                    <Link to={`/user/${user.id}`}>
-                      <ListItemText
-                        primary={user.name}
-                        secondary={user.email}
-                      />
-                    </Link>
-                  </ListItem>
-                );
-              })}
-          </List>
-        </Container>
-      </Paper>
+      <ToggleTheme />
+      {list &&
+        list.map((user) => {
+          return (
+            <Grid xs={12} key={user.id} item={true}>
+              {" "}
+              <Paper elevation={2} style={styles.Paper}>
+                <ListItem alignItems="flex-start" key={user.id}>
+                  <ListItemAvatar>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src={require("../assets/avatar.png")}
+                    />
+                  </ListItemAvatar>
+                  <Link to={`/user/${user.id}`}>
+                    <ListItemText primary={user.name} secondary={user.email} />
+                  </Link>
+                </ListItem>
+              </Paper>
+            </Grid>
+          );
+        })}
     </Container>
   );
 }

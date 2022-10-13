@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { IconButton, ListItem, ListItemText } from "@mui/material";
+import { Grid, IconButton, ListItem, ListItemText, Paper } from "@mui/material";
 import { useCallback, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAppDispatch, useAppSelector } from "../../store";
@@ -32,20 +32,24 @@ const MapTasks = () => {
     <Fragment>
       {findUserTask.map((elem) => {
         return (
-          <ListItem
-            key={elem.id}
-            secondaryAction={
-              <IconButton
-                edge="end"
-                aria-label="delete"
-                onClick={() => handleRemoveTodo(elem.id)}
+          <Grid xs={12}>
+            <Paper elevation={2}>
+              <ListItem
+                key={elem.id}
+                secondaryAction={
+                  <IconButton
+                    edge="end"
+                    aria-label="delete"
+                    onClick={() => handleRemoveTodo(elem.id)}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                }
               >
-                <DeleteIcon />
-              </IconButton>
-            }
-          >
-            <ListItemText key={elem.id} primary={elem.title} />
-          </ListItem>
+                <ListItemText key={elem.id} primary={elem.title} />
+              </ListItem>
+            </Paper>
+          </Grid>
         );
       })}
     </Fragment>
