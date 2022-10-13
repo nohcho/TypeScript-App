@@ -40,9 +40,10 @@ const MapTasks = () => {
     setText(e.target.value);
   };
 
-  const updateHandler = (i: number, title: string): void => {
-    patchTodos({ id: i, title: text });
+  const updateHandler = (i: number): void => {
+    dispatch(patchTodos({ id: i, title: text }));
     setInput(0);
+    setText("");
   };
 
   const handleRemoveTodo = (i: number) => {
@@ -83,7 +84,7 @@ const MapTasks = () => {
                     />{" "}
                     <IconButton
                       type="submit"
-                      onClick={() => updateHandler(elem.id, elem.title)}
+                      onClick={() => updateHandler(elem.id)}
                     >
                       <Save fontSize="small" />
                     </IconButton>{" "}

@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TodoList } from "../models/index";
 import { tasksPath } from "../constants";
 import axios from "axios";
+import { act } from "react-dom/test-utils";
 
 interface taskList {
   todo: TodoList[];
@@ -35,11 +36,11 @@ export const patchTodos = createAsyncThunk<Number, TodoList>(
   "todos/patchTodos",
   async ({ id, title }, thunkAPI) => {
     try {
-      const res = await axios.patch(tasksPath + id, {
+      const res: any = await axios.patch(tasksPath + id, {
         title,
       });
-
-      return await res.data;
+      console.log(res);
+      return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -96,7 +97,12 @@ export const todoSlice = createSlice({
             return elem.id !== action.payload;
           });
         }
-      );
+      )
+      .addCase(patchTodos.fulfilled, (state, action: any) => {
+        state.todo = state.todo.map((elem) =>
+          elem.id === action.payload.id ? action.payload : elem
+        );
+      });
   },
 });
 
