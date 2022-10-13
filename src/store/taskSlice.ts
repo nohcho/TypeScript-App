@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { todoList } from "../models/index";
+import { TodoList } from "../models/index";
 import { tasksPath } from "../constants";
 import axios from "axios";
 
 interface taskList {
-  todo: todoList[];
+  todo: TodoList[];
   loading: boolean;
 }
 
@@ -13,7 +13,7 @@ const initialState: taskList = {
   loading: false,
 };
 
-export const addTodos = createAsyncThunk<Object, todoList>(
+export const addTodos = createAsyncThunk<Object, TodoList>(
   "todos/addTodos",
   async ({ userId, id, title, completed }, thunkAPI) => {
     try {
@@ -56,7 +56,7 @@ export const deleteTodos = createAsyncThunk(
   }
 );
 
-export const getTodos = createAsyncThunk<todoList[]>(
+export const getTodos = createAsyncThunk<TodoList[]>(
   "todos/getTodos",
   async (_, thunkAPI) => {
     try {
@@ -83,7 +83,7 @@ export const todoSlice = createSlice({
       })
       .addCase(
         getTodos.fulfilled,
-        (state, action: PayloadAction<todoList[]>) => {
+        (state, action: PayloadAction<TodoList[]>) => {
           state.todo = action.payload;
         }
       )

@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { usersInfo } from "../models/index";
+import { UsersInfo } from "../models/index";
 import { usersPath } from "../constants";
 const axios = require("axios").default;
 
 interface usersList {
-  list: usersInfo[];
-  userId: usersInfo[];
+  list: UsersInfo[];
+  userId: UsersInfo[];
   loading: boolean;
 }
 
@@ -15,7 +15,7 @@ const initialState: usersList = {
   loading: false,
 };
 
-export const getUsers = createAsyncThunk<usersInfo[]>(
+export const getUsers = createAsyncThunk<UsersInfo[]>(
   "users/getUsers",
   async (_, thunkAPI) => {
     try {
@@ -28,7 +28,7 @@ export const getUsers = createAsyncThunk<usersInfo[]>(
   }
 );
 
-export const getUserById = createAsyncThunk<usersInfo[], String>(
+export const getUserById = createAsyncThunk<UsersInfo[], String>(
   "users/getUserById",
   async (id, thunkAPI) => {
     try {
@@ -45,7 +45,7 @@ export const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    setUsers: (state, action: PayloadAction<usersInfo[]>) => {
+    setUsers: (state, action: PayloadAction<UsersInfo[]>) => {
       state.list = action.payload;
       state.loading = false;
     },
@@ -54,12 +54,12 @@ export const usersSlice = createSlice({
     builder
       .addCase(
         getUsers.fulfilled,
-        (state, action: PayloadAction<usersInfo[]>) => {
+        (state, action: PayloadAction<UsersInfo[]>) => {
           state.loading = false;
           state.list = action.payload;
         }
       )
-      .addCase(getUsers.pending, (state) => {
+      .addCase(getUsers.pending, (state, action) => {
         state.loading = true;
       })
       .addCase(getUserById.fulfilled, (state, action: any) => {
@@ -67,7 +67,7 @@ export const usersSlice = createSlice({
         state.userId.push(action.payload);
         state.loading = false;
       })
-      .addCase(getUserById.pending, (state) => {
+      .addCase(getUserById.pending, (state, action: any) => {
         state.loading = true;
       });
   },
