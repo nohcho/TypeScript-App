@@ -17,7 +17,7 @@ export const addTodos = createAsyncThunk<Object, TodoList>(
   "todos/addTodos",
   async ({ userId, id, title, completed }, thunkAPI) => {
     try {
-      const res: any = await axios.post(tasksPath, {
+      const res = await axios.post(tasksPath, {
         userId,
         id,
         title,
@@ -31,18 +31,20 @@ export const addTodos = createAsyncThunk<Object, TodoList>(
   }
 );
 
-//   export const patchTodos = createAsyncThunk(
-//     "todos/patchTodos",
-//     async (todo, thunkAPI) => {
-//       try {
-//         const res = await axios.patch(``)
-//
-//         return await res.data;
-//       } catch (e) {
-//         return thunkAPI.rejectWithValue(e);
-//       }
-//     }
-//   );
+export const patchTodos = createAsyncThunk<Number, TodoList>(
+  "todos/patchTodos",
+  async ({ id, title }, thunkAPI) => {
+    try {
+      const res = await axios.patch(tasksPath + id, {
+        title,
+      });
+
+      return await res.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
 
 export const deleteTodos = createAsyncThunk(
   "todos/deleteTodos",

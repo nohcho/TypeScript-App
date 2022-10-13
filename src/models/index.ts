@@ -6,8 +6,8 @@ export interface UsersInfo {
 }
 
 export interface TodoList {
-  userId: number;
+  userId?: number;
   id: number;
   title: string;
-  completed: boolean;
+  completed?: boolean;
 }

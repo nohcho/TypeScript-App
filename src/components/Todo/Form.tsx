@@ -18,7 +18,7 @@ const Form = () => {
 
   const currentUserId = userIdFromUrl ?? 0;
 
-  const onBlurHandler = () => {
+  const onBlurHandler = (): void => {
     if (!text) {
       setIsEmpty(true);
     } else {
