@@ -7,7 +7,7 @@ const styles: any = {
     margin: "auto",
     textAlign: "center",
     width: 700,
-    color: "var(--colors-bg)"
+    color: "var(--colors-bg)",
   },
 };
 const Task = () => {

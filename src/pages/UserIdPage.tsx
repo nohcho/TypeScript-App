@@ -35,7 +35,6 @@ const User = () => {
     );
   }
 
-
   return (
     <div>
       <Container sx={{ bgcolor: "var(--colors-bg)", height: "100%" }}>

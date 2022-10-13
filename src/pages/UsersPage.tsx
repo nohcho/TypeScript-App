@@ -26,7 +26,7 @@ function Users() {
       margin: "auto",
       textAlign: "center",
       width: 700,
-      color: "var(--colors-bg)"
+      color: "var(--colors-bg)",
     },
   };
 
@@ -43,32 +43,33 @@ function Users() {
   }
   return (
     <Container sx={{ bgcolor: "var(--colors-bg)", height: "100%" }}>
-          <Paper style={styles.Paper}>
-      <Container sx={{ bgcolor: "white", width: "70%", margin: "auto" }}>
-        <List sx={{ width: "100%", maxWidth: 360 }}>
-          {list &&
-            list.map((user) => {
-              return (
-                <ListItem alignItems="flex-start" key={user.id}>
-                  <ListItemAvatar>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src={require("../assets/avatar.png")}
-                    />
-                  </ListItemAvatar>
-                  <Link to={`/user/${user.id}`}>
-                    <ListItemText primary={user.name} secondary={user.email} />
-                  </Link>
-                </ListItem>
-              );
-            })}
-        </List>
-      </Container>
+      <Paper style={styles.Paper}>
+        <Container sx={{ bgcolor: "white", width: "70%", margin: "auto" }}>
+          <List sx={{ width: "100%", maxWidth: 360 }}>
+            {list &&
+              list.map((user) => {
+                return (
+                  <ListItem alignItems="flex-start" key={user.id}>
+                    <ListItemAvatar>
+                      <Avatar
+                        alt="Remy Sharp"
+                        src={require("../assets/avatar.png")}
+                      />
+                    </ListItemAvatar>
+                    <Link to={`/user/${user.id}`}>
+                      <ListItemText
+                        primary={user.name}
+                        secondary={user.email}
+                      />
+                    </Link>
+                  </ListItem>
+                );
+              })}
+          </List>
+        </Container>
       </Paper>
     </Container>
   );
 }
-
-
 
 export default Users;

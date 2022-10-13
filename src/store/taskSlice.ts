@@ -87,11 +87,14 @@ export const todoSlice = createSlice({
           state.todo = action.payload;
         }
       )
-      .addCase(deleteTodos.fulfilled, (state, action: PayloadAction< Number >) => {
-        state.todo = state.todo.filter((elem) => {
-          return elem.id !== action.payload;
-        });
-      });
+      .addCase(
+        deleteTodos.fulfilled,
+        (state, action: PayloadAction<Number>) => {
+          state.todo = state.todo.filter((elem) => {
+            return elem.id !== action.payload;
+          });
+        }
+      );
   },
 });
 

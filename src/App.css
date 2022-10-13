@@ -1,8 +1,5 @@
-@import-normalize 
-
-*{
+@import-normalize * {
   box-sizing: border-box;
-  
 }
 
 body[data-theme="Dark"] {
@@ -12,7 +9,6 @@ body[data-theme="Dark"] {
 
   --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
 }
-
 
 body[data-theme="Light"] {
   --colors-text: hsl(200, 15%, 8%);

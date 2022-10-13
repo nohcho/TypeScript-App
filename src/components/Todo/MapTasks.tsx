@@ -11,7 +11,7 @@ const MapTasks = () => {
   const { userId } = useAppSelector((state) => state.list);
 
   const getUserId = userId.map((elem) => elem.id);
-  
+
   const findUserTask = todo
     .filter((elem) => elem.userId.toString() === getUserId.toString())
     .reverse();
