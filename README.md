@@ -10,6 +10,6 @@ In the project directory, you can run:
 
 ### About the app
 
-This is my first time I use TypeScript in practice, unfortunately I haven't managed to complete all tasks yet
+This is my first time I use TypeScript in practice, unfortunately I haven't managed to complete all tasks yet such as "Services", "Helpers"
 
 You can add, update and delete ToDo for the selected user. You can see the list of tasks that belong to the selected user and change theme there.
