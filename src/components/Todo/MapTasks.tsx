@@ -46,11 +46,11 @@ const MapTasks = () => {
     setText("");
   };
 
-  const handleRemoveTodo = (i: number):void => {
+  const handleRemoveTodo = (i: number): void => {
     dispatch(deleteTodos(i));
   };
 
-  useEffect(():void => {
+  useEffect((): void => {
     getTodosFunction();
   }, [getTodosFunction, dispatch]);
   return (

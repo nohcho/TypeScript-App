@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TodoList } from "../models/index";
 import { tasksPath } from "../constants";
 import axios from "axios";
-import { act } from "react-dom/test-utils";
 
 interface taskList {
   todo: TodoList[];
@@ -14,38 +13,38 @@ const initialState: taskList = {
   loading: false,
 };
 
-export const addTodos = createAsyncThunk<TodoList, {userId:number, id:number, title:string, completed:boolean}>(
-  "todos/addTodos",
-  async ({ userId, id, title, completed }, thunkAPI) => {
-    try {
-      const res = await axios.post(tasksPath, {
-        userId,
-        id,
-        title,
-        completed,
-      });
+export const addTodos = createAsyncThunk<
+  TodoList,
+  { userId: number; id: number; title: string; completed: boolean }
+>("todos/addTodos", async ({ userId, id, title, completed }, thunkAPI) => {
+  try {
+    const res = await axios.post(tasksPath, {
+      userId,
+      id,
+      title,
+      completed,
+    });
 
-      return res.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
-    }
+    return res.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e);
   }
-);
+});
 
-export const patchTodos = createAsyncThunk<TodoList, {id: number, title:string} >(
-  "todos/patchTodos",
-  async ({ id, title }, thunkAPI) => {
-    try {
-      const res: any = await axios.patch(tasksPath + id, {
-        title,
-      });
-      console.log(res);
-      return res.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
-    }
+export const patchTodos = createAsyncThunk<
+  TodoList,
+  { id: number; title: string }
+>("todos/patchTodos", async ({ id, title }, thunkAPI) => {
+  try {
+    const res: any = await axios.patch(tasksPath + id, {
+      title,
+    });
+    console.log(res);
+    return res.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e);
   }
-);
+});
 
 export const deleteTodos = createAsyncThunk(
   "todos/deleteTodos",
@@ -98,11 +97,14 @@ export const todoSlice = createSlice({
           });
         }
       )
-      .addCase(patchTodos.fulfilled, (state, action: PayloadAction<TodoList>) => {
-        state.todo = state.todo.map((elem) =>
-          elem.id === action.payload.id ? action.payload : elem
-        );
-      });
+      .addCase(
+        patchTodos.fulfilled,
+        (state, action: PayloadAction<TodoList>) => {
+          state.todo = state.todo.map((elem) =>
+            elem.id === action.payload.id ? action.payload : elem
+          );
+        }
+      );
   },
 });
 

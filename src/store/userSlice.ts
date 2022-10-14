@@ -28,7 +28,7 @@ export const getUsers = createAsyncThunk<UsersInfo[]>(
   }
 );
 
-export const getUserById = createAsyncThunk<UsersInfo[], String>(
+export const getUserById = createAsyncThunk<UsersInfo, Number>(
   "users/getUserById",
   async (id, thunkAPI) => {
     try {
@@ -62,11 +62,14 @@ export const usersSlice = createSlice({
       .addCase(getUsers.pending, (state) => {
         state.loading = true;
       })
-      .addCase(getUserById.fulfilled, (state, action: any) => {
-        state.userId = [];
-        state.userId.push(action.payload);
-        state.loading = false;
-      })
+      .addCase(
+        getUserById.fulfilled,
+        (state, action: PayloadAction<UsersInfo>) => {
+          state.userId = [];
+          state.userId.push(action.payload);
+          state.loading = false;
+        }
+      )
       .addCase(getUserById.pending, (state) => {
         state.loading = true;
       });

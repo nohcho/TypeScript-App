@@ -23,8 +23,8 @@ const User = () => {
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  useEffect(():void => {
-    dispatch(getUserById(id as string));
+  useEffect(() => {
+    dispatch(getUserById(+id!));
   }, [id, dispatch]);
 
   if (load) {
