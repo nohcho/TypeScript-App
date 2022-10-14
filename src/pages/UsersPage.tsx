@@ -34,7 +34,7 @@ function Users() {
     await dispatch(getUsers());
   }, [dispatch]);
 
-  useEffect(() => {
+  useEffect(():void => {
     getUsersFunction();
   }, [getUsersFunction]);
 

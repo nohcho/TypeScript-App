@@ -14,7 +14,7 @@ const initialState: taskList = {
   loading: false,
 };
 
-export const addTodos = createAsyncThunk<Object, TodoList>(
+export const addTodos = createAsyncThunk<TodoList, {userId:number, id:number, title:string, completed:boolean}>(
   "todos/addTodos",
   async ({ userId, id, title, completed }, thunkAPI) => {
     try {
@@ -32,7 +32,7 @@ export const addTodos = createAsyncThunk<Object, TodoList>(
   }
 );
 
-export const patchTodos = createAsyncThunk<Number, TodoList>(
+export const patchTodos = createAsyncThunk<TodoList, {id: number, title:string} >(
   "todos/patchTodos",
   async ({ id, title }, thunkAPI) => {
     try {
@@ -77,7 +77,7 @@ export const todoSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(addTodos.fulfilled, (state, action: any) => {
+      .addCase(addTodos.fulfilled, (state, action: PayloadAction<TodoList>) => {
         state.todo.push(action.payload);
         state.loading = false;
       })
@@ -98,7 +98,7 @@ export const todoSlice = createSlice({
           });
         }
       )
-      .addCase(patchTodos.fulfilled, (state, action: any) => {
+      .addCase(patchTodos.fulfilled, (state, action: PayloadAction<TodoList>) => {
         state.todo = state.todo.map((elem) =>
           elem.id === action.payload.id ? action.payload : elem
         );

@@ -23,7 +23,7 @@ const User = () => {
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  useEffect(() => {
+  useEffect(():void => {
     dispatch(getUserById(id as string));
   }, [id, dispatch]);
 
