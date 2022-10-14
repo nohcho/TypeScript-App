@@ -10,6 +10,6 @@ This is my first time I use TypeScript in practice, unfortunately I haven't mana
 
 You can add, update and delete ToDo for the selected user. 
 
-<font color="red"> Because of backend </font> (https://jsonplaceholder.typicode.com/todos) you cannot update a new added todo but the old ones you can update.
+<span style="color: green"> Because of backend </span> (https://jsonplaceholder.typicode.com/todos) you cannot update a new added todo but the old ones you can update.
 
 Props are not used in the project at all. You can see the list of tasks that belong to the selected user and change theme there.
