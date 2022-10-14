@@ -5,8 +5,7 @@
 body[data-theme="Dark"] {
   --colors-text: hsl(0, 0%, 100%);
   --colors-bg: hsl(207, 26%, 17%);
-  --colors-ui-base: hsl(209, 23%, 22%);
-
+  --colors-ui-base: hwb(208 17% 73%);
   --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
 }
 
@@ -14,10 +13,11 @@ body[data-theme="Light"] {
   --colors-text: hsl(200, 15%, 8%);
   --colors-bg: hsl(0, 0%, 98%);
   --colors-ui-base: hsl(0, 0%, 100%);
-
   --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-
+.btn {
+  cursor: pointer;
+}
 body {
   padding: 0;
   margin: 0;

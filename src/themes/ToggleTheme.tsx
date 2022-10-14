@@ -11,13 +11,13 @@ const ToggleTheme = () => {
   }, [theme]);
 
   return (
-    <div onClick={toggleTheme}>
+    <div onClick={toggleTheme} className={"btn"}>
       {theme === "Light" ? (
-        <IoMoonOutline size="14px" />
+        <IoMoonOutline size="14px" cursor={"pointer"}/>
       ) : (
         <IoMoon size="14px" />
       )}
-      <span style={{ marginLeft: "0.75rem" }}>{theme} Theme</span>
+      <span  style={{ marginLeft: "0.75rem" }}>{theme} Theme</span>
     </div>
   );
 };
