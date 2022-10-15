@@ -15,10 +15,7 @@ interface DialogProp extends DialogProps {
 
 const Modal = ({ open, onClose, children }: DialogProp) => {
   return (
-    <Dialog
-      onClose={(_, reason) => onClose(reason)}
-      open={open}
-    >
+    <Dialog onClose={(_, reason) => onClose(reason)} open={open}>
       <Box>
         <Typography>{children}</Typography>
         <DialogActions>

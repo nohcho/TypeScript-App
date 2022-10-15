@@ -77,7 +77,7 @@ const User = () => {
                         fontSize={20}
                       >{`Website: ${user.website}`}</Typography>
                       <Typography
-                        fontSize={20} 
+                        fontSize={20}
                       >{`Company: ${user.company.name}`}</Typography>
                     </>
                   }
