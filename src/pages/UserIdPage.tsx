@@ -53,12 +53,11 @@ const User = () => {
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  const handleModalOpen = ():void => {
+  const handleModalOpen = (): void => {
     setIsClicked(!isClicked);
   };
- 
 
-  useEffect(():void => {
+  useEffect((): void => {
     dispatch(getUserById(+id!));
   }, [id, dispatch]);
 
@@ -84,26 +83,48 @@ const User = () => {
               sx={{ color: "var(--colors-text)" }}
             />
             <Dialog
-        open={isClicked}
-        onClose={handleModalOpen}
-        children={<><Typography id="modal-modal-title" variant="h6" component="h2">
-        {<><Typography fontSize={20} fontWeight={800}>Additional information about the user:</Typography>
-        <Typography fontSize={20}>{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
-        <Typography fontSize={20}>{`Zip code: ${user.address.zipcode}`}</Typography>
-        <Typography fontSize={20}>{`Phone number: ${user.phone}`}</Typography>
-        <Typography fontSize={20}>{`Website: ${user.website}`}</Typography>
-        <Typography fontSize={20}>{`Company: ${user.company.name}`}</Typography>
-        </>}
-      </Typography>
-     </>}
-      />
+              open={isClicked}
+              onClose={handleModalOpen}
+              children={
+                <>
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                  >
+                    {
+                      <>
+                        <Typography fontSize={20} fontWeight={800}>
+                          Additional information about the user:
+                        </Typography>
+                        <Typography
+                          fontSize={20}
+                        >{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
+                        <Typography
+                          fontSize={20}
+                        >{`Zip code: ${user.address.zipcode}`}</Typography>
+                        <Typography
+                          fontSize={20}
+                        >{`Phone number: ${user.phone}`}</Typography>
+                        <Typography
+                          fontSize={20}
+                        >{`Website: ${user.website}`}</Typography>
+                        <Typography
+                          fontSize={20}
+                        >{`Company: ${user.company.name}`}</Typography>
+                      </>
+                    }
+                  </Typography>
+                </>
+              }
+            />
           </ListItem>
         );
       })}
       <Button color="primary" onClick={handleModalOpen}>
         More info
       </Button>
-      
+
       <ToggleTheme />
       <Task />
     </Container>

@@ -18,7 +18,7 @@ export interface UsersInfo {
   address: adress;
   phone: string;
   website: string;
-  company:company
+  company: company;
 }
 
 export interface TodoList {
@@ -26,5 +26,4 @@ export interface TodoList {
   id: number;
   title: string;
   completed?: boolean;
-  
 }
