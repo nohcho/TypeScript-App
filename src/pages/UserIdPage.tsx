@@ -25,7 +25,7 @@ interface DialogProp extends DialogProps {
   onClose: (reason: CloseReason) => void;
 }
 
-const Dialog = ({ title, open, onClose, children, ...props }: DialogProp) => {
+const Dialog = ({ open, onClose, children }: DialogProp) => {
   return (
     <MuiDialog
       onClose={(_, reason) => onClose(reason)}
@@ -53,12 +53,12 @@ const User = () => {
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  const handleModalOpen = () => {
+  const handleModalOpen = ():void => {
     setIsClicked(!isClicked);
   };
  
 
-  useEffect(() => {
+  useEffect(():void => {
     dispatch(getUserById(+id!));
   }, [id, dispatch]);
 
