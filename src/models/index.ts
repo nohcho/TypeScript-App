@@ -4,6 +4,12 @@ interface adress {
   city: string;
   zipcode: string;
 }
+
+interface company {
+  name: string;
+  catchPhrase: string;
+  bs: string;
+}
 export interface UsersInfo {
   id: number;
   name: string;
@@ -12,6 +18,7 @@ export interface UsersInfo {
   address: adress;
   phone: string;
   website: string;
+  company:company
 }
 
 export interface TodoList {
@@ -19,4 +26,5 @@ export interface TodoList {
   id: number;
   title: string;
   completed?: boolean;
+  
 }

@@ -34,10 +34,7 @@ const Dialog = ({ title, open, onClose, children, ...props }: DialogProp) => {
     >
       <Box>
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          In process
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          This function is in the process of developing
+          {children}
         </Typography>
         <DialogActions>
           <Button onClick={() => onClose("escapeKeyDown")}>Close</Button>
@@ -86,17 +83,27 @@ const User = () => {
               secondary={user.email}
               sx={{ color: "var(--colors-text)" }}
             />
+            <Dialog
+        open={isClicked}
+        onClose={handleModalOpen}
+        children={<><Typography id="modal-modal-title" variant="h6" component="h2">
+        {<><Typography fontSize={20} fontWeight={800}>Additional information about the user:</Typography>
+        <Typography fontSize={20}>{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
+        <Typography fontSize={20}>{`Zip code: ${user.address.zipcode}`}</Typography>
+        <Typography fontSize={20}>{`Phone number: ${user.phone}`}</Typography>
+        <Typography fontSize={20}>{`Website: ${user.website}`}</Typography>
+        <Typography fontSize={20}>{`Company: ${user.company.name}`}</Typography>
+        </>}
+      </Typography>
+     </>}
+      />
           </ListItem>
         );
       })}
       <Button color="primary" onClick={handleModalOpen}>
         More info
       </Button>
-      <Dialog
-        open={isClicked}
-        onClose={handleModalOpen}
-        children={<div>Test</div>}
-      />
+      
       <ToggleTheme />
       <Task />
     </Container>
