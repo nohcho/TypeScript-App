@@ -17,11 +17,10 @@ const Modal = ({ open, onClose, children }: DialogProp) => {
   return (
     <Dialog
       onClose={(_, reason) => onClose(reason)}
-      aria-labelledby="simple-dialog-title"
       open={open}
     >
       <Box>
-        <Typography id="modal-modal-title">{children}</Typography>
+        <Typography>{children}</Typography>
         <DialogActions>
           <Button onClick={() => onClose("escapeKeyDown")}>Close</Button>
         </DialogActions>
