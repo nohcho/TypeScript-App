@@ -36,7 +36,6 @@ const User = () => {
   }
 
   return (
-    <div>
       <Container sx={{ bgcolor: "var(--colors-bg)", height: "100%" }}>
         {userId.map((user) => {
           return (
@@ -61,7 +60,6 @@ const User = () => {
         <ToggleTheme />
         <Task />
       </Container>
-    </div>
   );
 };
 
