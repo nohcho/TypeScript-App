@@ -15,13 +15,19 @@ body[data-theme="Light"] {
   --colors-ui-base: hsl(0, 0%, 100%);
   --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.btn {
-  cursor: pointer;
-}
+
 body {
   padding: 0;
   margin: 0;
   color: var(--colors-text);
   font-weight: var(--fw-light);
   background-color: var(--colors-bg);
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.classMargin {
+  margin-left: 0.75rem 
 }

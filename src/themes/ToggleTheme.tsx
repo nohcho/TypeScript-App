@@ -17,7 +17,7 @@ const ToggleTheme = () => {
       ) : (
         <IoMoon size="14px" />
       )}
-      <span  style={{ marginLeft: "0.75rem" }}>{theme} Theme</span>
+      <span  className={"classMargin"}>{theme} Theme</span>
     </div>
   );
 };
