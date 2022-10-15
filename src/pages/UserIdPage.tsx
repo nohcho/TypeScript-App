@@ -1,7 +1,6 @@
 import { LoadingButton } from "@mui/lab";
 import {
   Avatar,
-  Box,
   Button,
   ListItem,
   ListItemAvatar,
@@ -60,34 +59,28 @@ const User = () => {
               onClose={handleModalOpen}
               children={
                 <>
-                  <Typography
-                    id="modal-modal-title"
-                    variant="h6"
-                    component="h2"
-                  >
-                    {
-                      <>
-                        <Typography fontSize={20} fontWeight={800}>
-                          Additional information about the user:
-                        </Typography>
-                        <Typography
-                          fontSize={20}
-                        >{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
-                        <Typography
-                          fontSize={20}
-                        >{`Zip code: ${user.address.zipcode}`}</Typography>
-                        <Typography
-                          fontSize={20}
-                        >{`Phone number: ${user.phone}`}</Typography>
-                        <Typography
-                          fontSize={20}
-                        >{`Website: ${user.website}`}</Typography>
-                        <Typography
-                          fontSize={20}
-                        >{`Company: ${user.company.name}`}</Typography>
-                      </>
-                    }
-                  </Typography>
+                  {
+                    <>
+                      <Typography fontSize={20} fontWeight={800}>
+                        Additional information about the user:
+                      </Typography>
+                      <Typography
+                        fontSize={20}
+                      >{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
+                      <Typography
+                        fontSize={20}
+                      >{`Zip code: ${user.address.zipcode}`}</Typography>
+                      <Typography
+                        fontSize={20}
+                      >{`Phone number: ${user.phone}`}</Typography>
+                      <Typography
+                        fontSize={20}
+                      >{`Website: ${user.website}`}</Typography>
+                      <Typography
+                        fontSize={20}
+                      >{`Company: ${user.company.name}`}</Typography>
+                    </>
+                  }
                 </>
               }
             />

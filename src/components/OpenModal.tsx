@@ -2,9 +2,10 @@ import { DialogProps } from "@mui/material";
 import {
   Box,
   Button,
-  Dialog as MuiDialog,
+  Dialog,
   Typography,
   DialogActions,
+  PaperProps,
 } from "@mui/material";
 type CloseReason = "backdropClick" | "escapeKeyDown" | "closeButtonClick";
 
@@ -12,23 +13,21 @@ interface DialogProp extends DialogProps {
   onClose: (reason: CloseReason) => void;
 }
 
-const Dialog = ({ open, onClose, children }: DialogProp) => {
+const Modal = ({ open, onClose, children }: DialogProp) => {
   return (
-    <MuiDialog
+    <Dialog
       onClose={(_, reason) => onClose(reason)}
       aria-labelledby="simple-dialog-title"
       open={open}
     >
       <Box>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          {children}
-        </Typography>
+        <Typography id="modal-modal-title">{children}</Typography>
         <DialogActions>
           <Button onClick={() => onClose("escapeKeyDown")}>Close</Button>
         </DialogActions>
       </Box>
-    </MuiDialog>
+    </Dialog>
   );
 };
 
-export default Dialog;
+export default Modal;
