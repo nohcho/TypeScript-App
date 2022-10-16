@@ -20,16 +20,6 @@ function Users() {
   const { list } = useAppSelector((state) => state.list);
   const load = useAppSelector((state) => state.list.loading);
 
-  const styles: any = {
-    Paper: {
-      padding: 20,
-      margin: "auto",
-      textAlign: "center",
-      width: 700,
-      color: "var(--colors-bg)",
-    },
-  };
-
   const getUsersFunction = useCallback(async () => {
     await dispatch(getUsers());
   }, [dispatch]);
@@ -43,14 +33,14 @@ function Users() {
   }
 
   return (
-    <Container sx={{ bgcolor: "var(--colors-bg)", height: "100%" }}>
+    <Container sx={{  height: "100%" }}>
       <ToggleTheme />
       {list &&
         list.map((user) => {
           return (
             <Grid xs={12} key={user.id} item={true}>
               {" "}
-              <Paper elevation={2} style={styles.Paper}>
+              <Paper elevation={2} className={"style-for-paper"}>
                 <ListItem alignItems="flex-start" key={user.id}>
                   <ListItemAvatar>
                     <Avatar

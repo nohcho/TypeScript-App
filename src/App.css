@@ -35,3 +35,10 @@ body {
 .style-for-dialog-content {
   padding: 10px;
 }
+
+.style-for-paper {
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+  width: 700;
+}
