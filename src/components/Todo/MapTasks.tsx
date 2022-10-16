@@ -57,7 +57,16 @@ const MapTasks = () => {
     <Fragment>
       {findUserTask.map((elem) => {
         return (
-          <Grid xs={12} item={true} key={elem.id}>
+          <Grid
+            sx={{
+              p: 2,
+              display: "grid",
+              gap: 2,
+            }}
+            xs={12}
+            item={true}
+            key={elem.id}
+          >
             <Paper elevation={2}>
               <ListItem
                 secondaryAction={
