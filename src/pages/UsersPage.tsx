@@ -33,7 +33,7 @@ function Users() {
   }
 
   return (
-    <Container sx={{  height: "100%" }}>
+    <Container sx={{ height: "100%" }}>
       <ToggleTheme />
       {list &&
         list.map((user) => {
