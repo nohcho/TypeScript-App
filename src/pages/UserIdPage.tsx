@@ -7,6 +7,7 @@ import {
   ListItemText,
   Typography,
   Dialog,
+  Box,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
@@ -15,6 +16,13 @@ import { useAppDispatch, useAppSelector } from "../store/index";
 import { getUserById } from "../store/userSlice";
 import Task from "../components/Tasks";
 import ToggleTheme from "../themes/ToggleTheme";
+import { DialogContent, DialogProps } from "@mui/material";
+import { DialogActions } from "@mui/material";
+type CloseReason = "backdropClick" | "escapeKeyDown" | "closeButtonClick";
+
+interface DialogProp extends DialogProps {
+  onClose: (reason: CloseReason) => void;
+}
 
 const User = () => {
   const dispatch = useAppDispatch();
@@ -54,32 +62,33 @@ const User = () => {
               secondary={user.email}
               sx={{ color: "var(--colors-text)" }}
             />
-            <Dialog
-              open={isClicked}
-              onClose={handleModalOpen}
-              children={
-                <div className="style-for-dialog-content">
-                  <Typography fontSize={20} fontWeight={800}>
-                    Additional information about the user:
-                  </Typography>
-                  <Typography
-                    fontSize={20}
-                  >{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
-                  <Typography
-                    fontSize={20}
-                  >{`Zip code: ${user.address.zipcode}`}</Typography>
-                  <Typography
-                    fontSize={20}
-                  >{`Phone number: ${user.phone}`}</Typography>
-                  <Typography
-                    fontSize={20}
-                  >{`Website: ${user.website}`}</Typography>
-                  <Typography
-                    fontSize={20}
-                  >{`Company: ${user.company.name}`}</Typography>
-                </div>
-              }
-            />
+            <Dialog open={isClicked} onClose={handleModalOpen}>
+              <div className="style-for-dialog-content">
+                <Typography fontSize={20} fontWeight={800}>
+                  Additional information about the user:
+                </Typography>
+                <Typography
+                  fontSize={20}
+                >{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
+                <Typography
+                  fontSize={20}
+                >{`Zip code: ${user.address.zipcode}`}</Typography>
+                <Typography
+                  fontSize={20}
+                >{`Phone number: ${user.phone}`}</Typography>
+                <Typography
+                  fontSize={20}
+                >{`Website: ${user.website}`}</Typography>
+                <Typography
+                  fontSize={20}
+                >{`Company: ${user.company.name}`}</Typography>
+                <Box>
+                  <DialogActions>
+                    <Button onClick={handleModalOpen}>Close</Button>
+                  </DialogActions>
+                </Box>
+              </div>
+            </Dialog>
           </ListItem>
         );
       })}
