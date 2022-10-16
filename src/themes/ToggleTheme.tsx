@@ -1,8 +1,8 @@
-import { Brightness6 } from "@mui/icons-material";
+import { DarkModeOutlined, LightMode } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import React, { useState, useEffect } from "react";
-
+import { useState, useEffect } from "react";
+import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 const ToggleTheme = () => {
   const [theme, setTheme] = useState<string>("Light");
 
@@ -15,8 +15,11 @@ const ToggleTheme = () => {
   return (
     <Container onClick={toggleTheme} className={"btn"} sx={{ ml: -4 }}>
       <IconButton>
-        {" "}
-        <Brightness6 />{" "}
+        {theme === "Dark" ? (
+          <DarkModeRoundedIcon className="moon" />
+        ) : (
+          <LightMode className="sun" />
+        )}
       </IconButton>
 
       <Box className={"classMargin"} component="span">
@@ -25,5 +28,4 @@ const ToggleTheme = () => {
     </Container>
   );
 };
-
 export default ToggleTheme;
