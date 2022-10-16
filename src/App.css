@@ -31,3 +31,7 @@ body {
 .classMargin {
   margin-left: 0.75rem;
 }
+
+.style-for-dialog-content {
+  padding: 10px;
+}

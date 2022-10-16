@@ -1,12 +1,5 @@
-import { DialogProps } from "@mui/material";
-import {
-  Box,
-  Button,
-  Dialog,
-  Typography,
-  DialogActions,
-  PaperProps,
-} from "@mui/material";
+import { DialogContent, DialogProps } from "@mui/material";
+import { Box, Button, Dialog, DialogActions } from "@mui/material";
 type CloseReason = "backdropClick" | "escapeKeyDown" | "closeButtonClick";
 
 interface DialogProp extends DialogProps {
@@ -17,7 +10,7 @@ const Modal = ({ open, onClose, children }: DialogProp) => {
   return (
     <Dialog onClose={(_, reason) => onClose(reason)} open={open}>
       <Box>
-        <Typography>{children}</Typography>
+        <DialogContent>{children}</DialogContent>
         <DialogActions>
           <Button onClick={() => onClose("escapeKeyDown")}>Close</Button>
         </DialogActions>

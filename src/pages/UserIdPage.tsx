@@ -58,30 +58,26 @@ const User = () => {
               open={isClicked}
               onClose={handleModalOpen}
               children={
-                <>
-                  {
-                    <>
-                      <Typography fontSize={20} fontWeight={800}>
-                        Additional information about the user:
-                      </Typography>
-                      <Typography
-                        fontSize={20}
-                      >{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
-                      <Typography
-                        fontSize={20}
-                      >{`Zip code: ${user.address.zipcode}`}</Typography>
-                      <Typography
-                        fontSize={20}
-                      >{`Phone number: ${user.phone}`}</Typography>
-                      <Typography
-                        fontSize={20}
-                      >{`Website: ${user.website}`}</Typography>
-                      <Typography
-                        fontSize={20}
-                      >{`Company: ${user.company.name}`}</Typography>
-                    </>
-                  }
-                </>
+                <div className="style-for-dialog-content">
+                  <Typography fontSize={20} fontWeight={800}>
+                    Additional information about the user:
+                  </Typography>
+                  <Typography
+                    fontSize={20}
+                  >{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
+                  <Typography
+                    fontSize={20}
+                  >{`Zip code: ${user.address.zipcode}`}</Typography>
+                  <Typography
+                    fontSize={20}
+                  >{`Phone number: ${user.phone}`}</Typography>
+                  <Typography
+                    fontSize={20}
+                  >{`Website: ${user.website}`}</Typography>
+                  <Typography
+                    fontSize={20}
+                  >{`Company: ${user.company.name}`}</Typography>
+                </div>
               }
             />
           </ListItem>
