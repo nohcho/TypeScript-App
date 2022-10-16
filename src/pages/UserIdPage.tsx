@@ -10,6 +10,7 @@ import {
   Box,
   DialogContent,
   DialogActions,
+  IconButton,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
@@ -17,19 +18,25 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/index";
 import { getUserById } from "../store/userSlice";
 import Task from "../components/Tasks";
-import ToggleTheme from "../themes/ToggleTheme";
+import { setThemeMode } from "../themes/themeSettings";
+import Brightness6Icon from "@mui/icons-material/Brightness6";
 
 const User = () => {
   const dispatch = useAppDispatch();
 
   const { id } = useParams();
   const { userId } = useAppSelector((state) => state.list);
+  const { themeMode } = useAppSelector((state) => state.theme);
   const load = useAppSelector((state) => state.list.loading);
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
   const handleModalOpen = (): void => {
     setIsClicked(!isClicked);
+  };
+
+  const handleChangeTheme = (): void => {
+    dispatch(setThemeMode(themeMode === "dark" ? "light" : "dark"));
   };
 
   useEffect((): void => {
@@ -90,8 +97,10 @@ const User = () => {
       <Button color="primary" onClick={handleModalOpen}>
         More info
       </Button>
+      <IconButton onClick={handleChangeTheme}>
+        <Brightness6Icon />
+      </IconButton>
 
-      <ToggleTheme />
       <Task />
     </Container>
   );

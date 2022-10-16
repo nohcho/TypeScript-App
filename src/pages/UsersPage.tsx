@@ -6,19 +6,26 @@ import {
   ListItemText,
   Paper,
   Grid,
+  IconButton,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/index";
+import { setThemeMode } from "../store/themeSlice";
 import { getUsers } from "../store/userSlice";
-import ToggleTheme from "../themes/ToggleTheme";
+import Brightness6Icon from "@mui/icons-material/Brightness6";
 
 function Users() {
   const dispatch = useAppDispatch();
 
   const { list } = useAppSelector((state) => state.list);
+  const { themeMode } = useAppSelector((state) => state.theme);
   const load = useAppSelector((state) => state.list.loading);
+
+  const handleChangeTheme = (): void => {
+    dispatch(setThemeMode(themeMode === "dark" ? "light" : "dark"));
+  };
 
   const getUsersFunction = useCallback(async () => {
     await dispatch(getUsers());
@@ -31,10 +38,11 @@ function Users() {
   if (load) {
     return <LoadingButton size="large" fullWidth loading></LoadingButton>;
   }
-
   return (
     <Container sx={{ height: "100%" }}>
-      <ToggleTheme />
+      <IconButton onClick={handleChangeTheme}>
+        <Brightness6Icon />
+      </IconButton>
       {list &&
         list.map((user) => {
           return (
