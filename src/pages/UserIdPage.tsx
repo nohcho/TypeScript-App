@@ -8,6 +8,8 @@ import {
   Typography,
   Dialog,
   Box,
+  DialogContent,
+  DialogActions,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
@@ -16,13 +18,6 @@ import { useAppDispatch, useAppSelector } from "../store/index";
 import { getUserById } from "../store/userSlice";
 import Task from "../components/Tasks";
 import ToggleTheme from "../themes/ToggleTheme";
-import { DialogContent, DialogProps } from "@mui/material";
-import { DialogActions } from "@mui/material";
-type CloseReason = "backdropClick" | "escapeKeyDown" | "closeButtonClick";
-
-interface DialogProp extends DialogProps {
-  onClose: (reason: CloseReason) => void;
-}
 
 const User = () => {
   const dispatch = useAppDispatch();
