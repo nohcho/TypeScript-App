@@ -63,7 +63,7 @@ const User = () => {
               sx={{ color: "var(--colors-text)" }}
             />
             <Dialog open={isClicked} onClose={handleModalOpen}>
-              <div className="style-for-dialog-content">
+              <DialogContent className="style-for-dialog-content">
                 <Typography fontSize={20} fontWeight={800}>
                   Additional information about the user:
                 </Typography>
@@ -87,7 +87,7 @@ const User = () => {
                     <Button onClick={handleModalOpen}>Close</Button>
                   </DialogActions>
                 </Box>
-              </div>
+              </DialogContent>
             </Dialog>
           </ListItem>
         );
