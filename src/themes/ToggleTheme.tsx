@@ -1,5 +1,7 @@
+import { Brightness6 } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import { Box, Container } from "@mui/system";
 import React, { useState, useEffect } from "react";
-import { IoMoon, IoMoonOutline } from "react-icons/io5";
 
 const ToggleTheme = () => {
   const [theme, setTheme] = useState<string>("Light");
@@ -11,14 +13,16 @@ const ToggleTheme = () => {
   }, [theme]);
 
   return (
-    <div onClick={toggleTheme} className={"btn"}>
-      {theme === "Light" ? (
-        <IoMoonOutline size="14px" cursor={"pointer"} />
-      ) : (
-        <IoMoon size="14px" />
-      )}
-      <span className={"classMargin"}>{theme} Theme</span>
-    </div>
+    <Container onClick={toggleTheme} className={"btn"} sx={{ ml: -4 }}>
+      <IconButton>
+        {" "}
+        <Brightness6 />{" "}
+      </IconButton>
+
+      <Box className={"classMargin"} component="span">
+        {theme} Theme
+      </Box>
+    </Container>
   );
 };
 
