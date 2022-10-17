@@ -73,26 +73,30 @@ const MapTasks = () => {
             <Paper elevation={2}>
               <ListItem
                 secondaryAction={
-                  <>
-                    <IconButton onClick={() => showInputHandler(elem.id)}>
-                      <Build fontSize="small" />
-                    </IconButton>
-                    <IconButton
-                      edge="end"
-                      aria-label="delete"
-                      onClick={() => handleRemoveTodo(elem.id)}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </>
+                  <Fragment>
+                    {input !== elem.id && (
+                      <Fragment>
+                        <IconButton onClick={() => showInputHandler(elem.id)}>
+                          <Build fontSize="small" />
+                        </IconButton>
+                        <IconButton
+                          edge="end"
+                          aria-label="delete"
+                          onClick={() => handleRemoveTodo(elem.id)}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </Fragment>
+                    )}
+                  </Fragment>
                 }
               >
                 {input === elem.id ? (
                   <>
                     <Input
-                      style={{ width: "93%" }}
                       onChange={inputHandler}
                       defaultValue={elem.title}
+                      fullWidth
                     />{" "}
                     <IconButton
                       type="submit"
