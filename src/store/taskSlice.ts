@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TodoList } from "../models/index";
-import request from "../helpers/requests";
+import request from "../helpers";
 
 interface taskList {
   todo: TodoList[];

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UsersInfo } from "../models/index";
-import request from "../helpers/requests";
+import request from "../helpers";
 
 interface usersList {
   list: UsersInfo[];
