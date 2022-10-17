@@ -16,6 +16,7 @@ import { useAppDispatch, useAppSelector } from "../store/index";
 import { setThemeMode } from "../store/themeSlice";
 import { getUsers } from "../store/userSlice";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
+
 function Users() {
   const dispatch = useAppDispatch();
 
