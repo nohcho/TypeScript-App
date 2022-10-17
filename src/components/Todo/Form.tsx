@@ -1,6 +1,11 @@
-import { Button, Grid, Paper, TextField } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  Grid,
+  Paper,
+  TextField,
+} from "@mui/material";
 import { useState, ChangeEvent, FormEvent } from "react";
-import { LoadingButton } from "@mui/lab";
 import { addTodos } from "../../store/taskSlice";
 import { useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../store";
@@ -65,15 +70,11 @@ const Form = () => {
                 variant="contained"
                 disabled={!text}
               >
-                {load ? (
-                  <LoadingButton
-                    loading
-                    style={{ width: "8%" }}
-                  ></LoadingButton>
-                ) : (
-                  "Click"
-                )}
+                Click
               </Button>
+              {load && (
+                <CircularProgress sx={{ ml: -7 }} style={{ width: "2%" }} />
+              )}
             </Grid>
           </Grid>
         </Grid>
@@ -81,5 +82,4 @@ const Form = () => {
     </form>
   );
 };
-
 export default Form;
