@@ -10,6 +10,8 @@ import {
   DialogContent,
   DialogActions,
   IconButton,
+  Backdrop,
+  CircularProgress,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
@@ -21,8 +23,6 @@ import { setThemeMode } from "../themes/themeSettings";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import Loading from "../components/Loading";
-// or
 const User = () => {
   const dispatch = useAppDispatch();
 
@@ -45,9 +45,6 @@ const User = () => {
     dispatch(getUserById(+id!));
   }, [id, dispatch]);
 
-  if (load) {
-    return <Loading />;
-  }
   return (
     <Container sx={{ bgcolor: "var(--colors-bg)", height: "100%" }}>
       {userId.map((user) => {
@@ -94,6 +91,14 @@ const User = () => {
       <Button color="primary" onClick={handleModalOpen}>
         More info
       </Button>
+      {load && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={isClicked}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
       <IconButton onClick={handleChangeTheme}>
         <Brightness6Icon />
       </IconButton>
@@ -106,8 +111,15 @@ const User = () => {
       </Box>
 
       <Task />
+      {load && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={load}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
     </Container>
   );
 };
-
 export default User;

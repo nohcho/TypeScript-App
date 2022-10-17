@@ -6,6 +6,8 @@ import {
   Paper,
   Grid,
   IconButton,
+  Backdrop,
+  CircularProgress,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useCallback, useEffect } from "react";
@@ -14,8 +16,6 @@ import { useAppDispatch, useAppSelector } from "../store/index";
 import { setThemeMode } from "../store/themeSlice";
 import { getUsers } from "../store/userSlice";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
-import Loading from "../components/Loading";
-
 function Users() {
   const dispatch = useAppDispatch();
 
@@ -35,9 +35,6 @@ function Users() {
     getUsersFunction();
   }, [getUsersFunction]);
 
-  if (load) {
-    return <Loading />;
-  }
   return (
     <Container sx={{ height: "100%" }}>
       <IconButton onClick={handleChangeTheme}>
@@ -64,6 +61,14 @@ function Users() {
             </Grid>
           );
         })}
+      {load && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={load}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
     </Container>
   );
 }
