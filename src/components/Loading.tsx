@@ -1,12 +1,8 @@
 import {
   Box,
-  Button,
   CircularProgress,
-  Paper,
-  Typography,
 } from "@mui/material";
 import { Container } from "@mui/system";
-import { Link } from "react-router-dom";
 
 function Loading() {
   return (
