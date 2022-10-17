@@ -22,6 +22,7 @@ import { setThemeMode } from "../themes/themeSettings";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Loading from "../components/Loading";
 
 const User = () => {
   const dispatch = useAppDispatch();
@@ -46,11 +47,7 @@ const User = () => {
   }, [id, dispatch]);
 
   if (load) {
-    return (
-      <LoadingButton fullWidth loading>
-        Submit
-      </LoadingButton>
-    );
+    return <Loading />;
   }
 
   return (

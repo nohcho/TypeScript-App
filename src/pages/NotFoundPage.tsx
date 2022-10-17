@@ -1,4 +1,4 @@
-import NotFoundBlock from "../components/NotFoundPage";
+import NotFoundBlock from "../components/NotFound";
 
 const NotFound = () => {
   return <NotFoundBlock />;

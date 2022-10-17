@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from "../store/index";
 import { setThemeMode } from "../store/themeSlice";
 import { getUsers } from "../store/userSlice";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
+import Loading from "../components/Loading";
 
 function Users() {
   const dispatch = useAppDispatch();
@@ -36,7 +37,7 @@ function Users() {
   }, [getUsersFunction]);
 
   if (load) {
-    return <LoadingButton size="large" fullWidth loading></LoadingButton>;
+    return <Loading />;
   }
   return (
     <Container sx={{ height: "100%" }}>
