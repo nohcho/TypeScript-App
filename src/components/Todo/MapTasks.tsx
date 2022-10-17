@@ -41,9 +41,12 @@ const MapTasks = () => {
   };
 
   const updateHandler = (i: number): void => {
-    dispatch(patchTodos({ id: i, title: text }));
+    if (text !== "" && text !== " ") {
+      dispatch(patchTodos({ id: i, title: text }));
+      setInput(0);
+      setText("");
+    }
     setInput(0);
-    setText("");
   };
 
   const handleRemoveTodo = (i: number): void => {
