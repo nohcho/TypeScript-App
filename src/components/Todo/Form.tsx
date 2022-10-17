@@ -1,6 +1,4 @@
 import {
-  Button,
-  CircularProgress,
   Grid,
   Paper,
   TextField,
@@ -9,6 +7,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { addTodos } from "../../store/taskSlice";
 import { useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../store";
+import { LoadingButton } from "@mui/lab";
 
 const Form = () => {
   const dispatch = useAppDispatch();
@@ -64,17 +63,15 @@ const Form = () => {
               helperText={isEmpty ? "Enter text" : ""}
             />
             <Grid xs={2} md={1} item>
-              <Button
+              <LoadingButton
                 style={{ width: "8%" }}
                 type="submit"
                 variant="contained"
                 disabled={!text}
+                loading={load}
               >
                 Click
-              </Button>
-              {load && (
-                <CircularProgress sx={{ ml: -7 }} style={{ width: "2%" }} />
-              )}
+              </LoadingButton>
             </Grid>
           </Grid>
         </Grid>
