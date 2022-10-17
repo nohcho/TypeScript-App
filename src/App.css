@@ -12,3 +12,8 @@
   text-align: center;
   width: 700;
 }
+
+.text-link {
+  color: inherit;
+  text-decoration: inherit;
+}

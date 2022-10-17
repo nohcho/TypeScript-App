@@ -20,6 +20,8 @@ import { getUserById } from "../store/userSlice";
 import Task from "../components/Tasks";
 import { setThemeMode } from "../themes/themeSettings";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
+import { Link } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const User = () => {
   const dispatch = useAppDispatch();
@@ -100,6 +102,13 @@ const User = () => {
       <IconButton onClick={handleChangeTheme}>
         <Brightness6Icon />
       </IconButton>
+      <Box>
+        <Link to="/" className="text-link">
+          <IconButton>
+            <ArrowBackIcon color="primary" />
+          </IconButton>
+        </Link>
+      </Box>
 
       <Task />
     </Container>
