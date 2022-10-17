@@ -6,5 +6,4 @@ const request = axios.create({
   baseURL: urlPath,
 });
 
-
 export default request;

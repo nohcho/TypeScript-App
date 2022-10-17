@@ -87,9 +87,9 @@ const MapTasks = () => {
                 {input === elem.id ? (
                   <>
                     <Input
-                      style={{ width: "90%" }}
+                      style={{ width: "93%" }}
                       onChange={inputHandler}
-                      value={text}
+                      defaultValue={elem.title}
                     />{" "}
                     <IconButton
                       type="submit"
