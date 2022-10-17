@@ -73,7 +73,7 @@ export const usersSlice = createSlice({
         state.loading = true;
       });
   },
-});
+})
 
 export default usersSlice.reducer;
 export const { setUsers } = usersSlice.actions;

@@ -104,6 +104,6 @@ export const todoSlice = createSlice({
         }
       );
   },
-});
+})
 
 export default todoSlice.reducer;
