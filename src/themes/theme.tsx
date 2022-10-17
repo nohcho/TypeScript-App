@@ -17,9 +17,6 @@ const MuiThemeProvider: React.FC<Props> = ({ children }) => {
 
   const theme = createTheme({
     palette: {
-      primary: {
-        main: "#651fff",
-      },
       mode: isLight ? "light" : "dark",
     },
   });
