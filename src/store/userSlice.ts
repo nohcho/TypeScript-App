@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UsersInfo } from "../models/index";
-import { usersPath } from "../constants";
-const axios = require("axios").default;
+import request from "../helpers/requests";
 
 interface usersList {
   list: UsersInfo[];
@@ -19,7 +18,7 @@ export const getUsers = createAsyncThunk<UsersInfo[]>(
   "users/getUsers",
   async (_, thunkAPI) => {
     try {
-      const data = await axios.get(usersPath);
+      const data = await request.get("/users");
 
       return data.data;
     } catch (e) {
@@ -32,7 +31,7 @@ export const getUserById = createAsyncThunk<UsersInfo, Number>(
   "users/getUserById",
   async (id, thunkAPI) => {
     try {
-      const data = await axios.get(usersPath + id);
+      const data = await request.get("/users/" + id);
 
       return data.data;
     } catch (e) {

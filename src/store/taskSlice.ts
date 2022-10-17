@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TodoList } from "../models/index";
-import { tasksPath } from "../constants";
-import axios from "axios";
+import request from "../helpers/requests";
 
 interface taskList {
   todo: TodoList[];
@@ -18,7 +17,7 @@ export const addTodos = createAsyncThunk<
   { userId: number; id: number; title: string; completed: boolean }
 >("todos/addTodos", async ({ userId, id, title, completed }, thunkAPI) => {
   try {
-    const res = await axios.post(tasksPath, {
+    const res = await request.post("/todos", {
       userId,
       id,
       title,
@@ -36,10 +35,9 @@ export const patchTodos = createAsyncThunk<
   { id: number; title: string }
 >("todos/patchTodos", async ({ id, title }, thunkAPI) => {
   try {
-    const res: any = await axios.patch(tasksPath + id, {
+    const res = await request.patch("/todos/" + id, {
       title,
     });
-    console.log(res);
     return res.data;
   } catch (e) {
     return thunkAPI.rejectWithValue(e);
@@ -50,7 +48,7 @@ export const deleteTodos = createAsyncThunk(
   "todos/deleteTodos",
   async (i: number, thunkAPI) => {
     try {
-      await axios.delete(tasksPath + i);
+      await request.delete("/todos/" + i);
       return i;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -62,7 +60,7 @@ export const getTodos = createAsyncThunk<TodoList[]>(
   "todos/getTodos",
   async (_, thunkAPI) => {
     try {
-      const res = await axios(tasksPath);
+      const res = await request.get("/todos");
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
