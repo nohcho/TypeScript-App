@@ -6,7 +6,7 @@ In the project directory, you can run:
 
 ### About the app
 
-This is my first time I use TypeScript in practice, unfortunately I haven't managed to complete "Services" folder yet
+This is my first time I use TypeScript in practice
 
 You can add, update and delete ToDo for the selected user.
 
