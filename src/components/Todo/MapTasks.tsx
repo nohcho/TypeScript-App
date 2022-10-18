@@ -16,8 +16,10 @@ import { ChangeEvent } from "react";
 
 const MapTasks = () => {
   const dispatch = useAppDispatch();
+
   const [input, setInput] = useState<number>();
   const [text, setText] = useState<string>("");
+
   const { todo } = useAppSelector((state) => state.todo);
   const { userId } = useAppSelector((state) => state.list);
 
@@ -41,7 +43,7 @@ const MapTasks = () => {
   };
 
   const updateHandler = (i: number): void => {
-    if (text !== "" && text !== " ") {
+    if (0 !== text.trim().length) {
       dispatch(patchTodos({ id: i, title: text }));
       setInput(0);
       setText("");
