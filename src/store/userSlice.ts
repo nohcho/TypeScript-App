@@ -1,7 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UsersInfo } from "../models/index";
-import request from "../helpers";
-
+import { getUserById, getUsers } from "../services/user.services";
 interface usersList {
   list: UsersInfo[];
   userId: UsersInfo[];
@@ -14,31 +13,7 @@ const initialState: usersList = {
   loading: false,
 };
 
-export const getUsers = createAsyncThunk<UsersInfo[]>(
-  "users/getUsers",
-  async (_, thunkAPI) => {
-    try {
-      const data = await request.get("/users");
 
-      return data.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
-    }
-  }
-);
-
-export const getUserById = createAsyncThunk<UsersInfo, Number>(
-  "users/getUserById",
-  async (id, thunkAPI) => {
-    try {
-      const data = await request.get("/users/" + id);
-
-      return data.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
-    }
-  }
-);
 
 export const usersSlice = createSlice({
   name: "users",

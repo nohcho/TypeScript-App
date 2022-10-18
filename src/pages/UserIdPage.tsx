@@ -17,7 +17,7 @@ import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/index";
-import { getUserById } from "../store/userSlice";
+import { getUserById } from "../services/user.services";
 import Task from "../components/Tasks";
 import { setThemeMode } from "../themes/themeSettings";
 import Brightness6Icon from "@mui/icons-material/Brightness6";

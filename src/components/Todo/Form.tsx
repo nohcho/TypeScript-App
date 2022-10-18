@@ -1,6 +1,6 @@
 import { Grid, Paper, TextField } from "@mui/material";
 import { useState, ChangeEvent, FormEvent } from "react";
-import { addTodos } from "../../store/taskSlice";
+import { addTodos } from "../../services/task.services";
 import { useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../store";
 import { LoadingButton } from "@mui/lab";

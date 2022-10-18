@@ -16,7 +16,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/index";
 import { setThemeMode } from "../store/themeSlice";
-import { getUsers } from "../store/userSlice";
+import { getUsers } from "../services/user.services";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
 
 function Users() {
