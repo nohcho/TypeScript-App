@@ -92,14 +92,6 @@ const User = () => {
       <Button color="primary" onClick={handleModalOpen}>
         More info
       </Button>
-      {load && (
-        <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={isClicked}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      )}
       <IconButton onClick={handleChangeTheme}>
         <Brightness6Icon />
       </IconButton>
