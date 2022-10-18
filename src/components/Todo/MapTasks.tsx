@@ -74,7 +74,7 @@ const MapTasks = () => {
               <ListItem
                 secondaryAction={
                   <Fragment>
-                    {input !== elem.id && (
+                    {input !== elem.id ? (
                       <Fragment>
                         <IconButton onClick={() => showInputHandler(elem.id)}>
                           <Build fontSize="small" />
@@ -87,26 +87,28 @@ const MapTasks = () => {
                           <DeleteIcon />
                         </IconButton>
                       </Fragment>
+                    ) : (
+                      <>
+                        {" "}
+                        <IconButton
+                          type="submit"
+                          onClick={() => updateHandler(elem.id)}
+                        >
+                          <Save fontSize="small" />
+                        </IconButton>{" "}
+                      </>
                     )}
                   </Fragment>
                 }
               >
-                {input === elem.id ? (
-                  <>
-                    <Input
-                      onChange={inputHandler}
-                      defaultValue={elem.title}
-                      fullWidth
-                    />{" "}
-                    <IconButton
-                      type="submit"
-                      onClick={() => updateHandler(elem.id)}
-                    >
-                      <Save fontSize="small" />
-                    </IconButton>{" "}
-                  </>
-                ) : (
+                {input !== elem.id ? (
                   <ListItemText primary={elem.title} />
+                ) : (
+                  <Input
+                    onChange={inputHandler}
+                    defaultValue={elem.title}
+                    fullWidth
+                  />
                 )}
               </ListItem>
             </Paper>
