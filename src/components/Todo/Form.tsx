@@ -28,15 +28,20 @@ const Form = () => {
 
   const submitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(
-      addTodos({
-        userId: +currentUserId,
-        id: todo.length + 1,
-        title: text,
-        completed: false,
-      })
-    );
-    setText("");
+    if (0 !== text.trim().length) {
+      dispatch(
+        addTodos({
+          userId: +currentUserId,
+          id: todo.length + 1,
+          title: text,
+          completed: false,
+        })
+      );
+      setText("");
+    } else {
+      setIsEmpty(true);
+      setText("");
+    }
   };
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>): void => {
