@@ -29,8 +29,8 @@ function Users() {
   const [searchUser, setSearchUser] = useState<string>("");
 
   const filteredUsers = list.filter((item) => {
-    const fio = `${item.name.toLowerCase()}`;
-    return fio.includes(searchUser.toLowerCase());
+    const userName = `${item.name.toLowerCase()}`;
+    return userName.includes(searchUser.toLowerCase());
   });
 
   const handleChangeTheme = (): void => {
