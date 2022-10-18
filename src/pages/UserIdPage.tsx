@@ -47,20 +47,16 @@ const User = () => {
   }, [id, dispatch]);
 
   return (
-    <Container sx={{ bgcolor: "var(--colors-bg)", height: "100%" }}>
+    <Container sx={{ height: "100%", width: 800 }}>
       {userId.map((user) => {
         return (
           <ListItem key={user.id}>
             <ListItemAvatar>
               <Avatar alt="Remy Sharp" src={require("../assets/avatar.png")} />
             </ListItemAvatar>
-            <ListItemText
-              primary={user.name}
-              secondary={user.email}
-              sx={{ color: "var(--colors-text)" }}
-            />
+            <ListItemText primary={user.name} secondary={user.email} />
             <Dialog open={isClicked} onClose={handleModalOpen}>
-              <DialogContent className="style-for-dialog-content">
+              <DialogContent sx={{ padding: "10px" }}>
                 <Typography fontSize={20} fontWeight={800}>
                   Additional information about the user:
                 </Typography>

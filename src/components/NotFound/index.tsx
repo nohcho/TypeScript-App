@@ -14,7 +14,15 @@ function NotFoundBlock() {
         }}
       >
         {" "}
-        <Paper elevation={2} className={"style-for-paper"}>
+        <Paper
+          elevation={2}
+          sx={{
+            padding: "20px",
+            margin: "auto",
+            textAlign: "center",
+            width: 700,
+          }}
+        >
           <Typography sx={{ p: 5 }} variant="h4">
             This page was not found 😞
           </Typography>

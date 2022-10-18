@@ -37,7 +37,7 @@ function Users() {
   }, [getUsersFunction]);
 
   return (
-    <Container sx={{ height: "100%" }}>
+    <Container sx={{ height: "100%", width: 800 }}>
       <IconButton onClick={handleChangeTheme}>
         <Brightness6Icon />
       </IconButton>
@@ -46,7 +46,10 @@ function Users() {
           return (
             <Grid xs={12} key={user.id} item={true}>
               {" "}
-              <Paper elevation={2} className={"style-for-paper"}>
+              <Paper
+                elevation={2}
+                sx={{ padding: "20px", margin: "auto", textAlign: "center" }}
+              >
                 <ListItem alignItems="flex-start" key={user.id}>
                   <ListItemAvatar>
                     <Avatar
