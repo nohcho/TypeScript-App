@@ -10,7 +10,11 @@ import {
 import { useCallback, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { deleteTodos, getTodos, patchTodos } from "../../services/task.services";
+import {
+  deleteTodos,
+  getTodos,
+  patchTodos,
+} from "../../services/task.services";
 import { Build, Save } from "@mui/icons-material";
 import { ChangeEvent } from "react";
 

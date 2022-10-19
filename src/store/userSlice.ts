@@ -13,8 +13,6 @@ const initialState: usersList = {
   loading: false,
 };
 
-
-
 export const usersSlice = createSlice({
   name: "users",
   initialState,

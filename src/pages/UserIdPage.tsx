@@ -12,6 +12,7 @@ import {
   IconButton,
   Backdrop,
   CircularProgress,
+  DialogTitle,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
@@ -45,7 +46,6 @@ const User = () => {
   useEffect((): void => {
     dispatch(getUserById(+id!));
   }, [id, dispatch]);
-
   return (
     <Container sx={{ height: "100%", width: 800 }}>
       {userId.map((user) => {
@@ -56,31 +56,34 @@ const User = () => {
             </ListItemAvatar>
             <ListItemText primary={user.name} secondary={user.email} />
             <Dialog open={isClicked} onClose={handleModalOpen}>
-              <DialogContent sx={{ padding: "10px" }}>
-                <Typography fontSize={20} fontWeight={800}>
+              <DialogContent sx={{ padding: "10px" }} dividers>
+                <DialogTitle fontSize={20} fontWeight={800}>
                   Additional information about the user:
-                </Typography>
+                </DialogTitle>
                 <Typography
+                  gutterBottom
                   fontSize={20}
                 >{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
                 <Typography
+                  gutterBottom
                   fontSize={20}
                 >{`Zip code: ${user.address.zipcode}`}</Typography>
                 <Typography
+                  gutterBottom
                   fontSize={20}
                 >{`Phone number: ${user.phone}`}</Typography>
                 <Typography
+                  gutterBottom
                   fontSize={20}
                 >{`Website: ${user.website}`}</Typography>
                 <Typography
+                  gutterBottom
                   fontSize={20}
                 >{`Company: ${user.company.name}`}</Typography>
-                <Box>
-                  <DialogActions>
-                    <Button onClick={handleModalOpen}>Close</Button>
-                  </DialogActions>
-                </Box>
               </DialogContent>
+              <DialogActions>
+                <Button onClick={handleModalOpen}>Close</Button>
+              </DialogActions>
             </Dialog>
           </ListItem>
         );

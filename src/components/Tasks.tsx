@@ -8,9 +8,9 @@ const Task = () => {
       sx={{ padding: "20px", margin: "auto", textAlign: "center", width: 900 }}
     >
       <Form />
-        <Paper>
-          <MapTasks />
-        </Paper>
+      <Paper>
+        <MapTasks />
+      </Paper>
     </Paper>
   );
 };
