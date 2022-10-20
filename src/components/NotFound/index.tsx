@@ -43,7 +43,7 @@ function NotFoundBlock() {
             This page was not found 😞
           </Typography>
           <Typography sx={{ p: 5 }} fontSize={22}>
-            {`You will be redirected to the home page in: ${timeLeft} second${letter}`}{" "}
+            {`You will be redirected to the home page in ${timeLeft} second${letter}`}{" "}
           </Typography>
           <Link to={"/"} className="text-link">
             <Button variant="outlined" size="small">
