@@ -1,8 +1,24 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function NotFoundBlock() {
+  const [timeLeft, setTimeLeft] = useState(5);
+  const [letter, setLetter] = useState("s");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (timeLeft === 2) setLetter("");
+      if (timeLeft >= 1) setTimeLeft(timeLeft - 1);
+    }, 1000);
+    if (timeLeft === 0) {
+      navigate("/");
+    }
+  }, [timeLeft, navigate]);
+
   return (
     <Container maxWidth="sm">
       <Box
@@ -25,6 +41,9 @@ function NotFoundBlock() {
         >
           <Typography sx={{ p: 5 }} variant="h4">
             This page was not found 😞
+          </Typography>
+          <Typography sx={{ p: 5 }} fontSize={22}>
+            {`You will be redirected to the home page in: ${timeLeft} second${letter}`}{" "}
           </Typography>
           <Link to={"/"} className="text-link">
             <Button variant="outlined" size="small">
