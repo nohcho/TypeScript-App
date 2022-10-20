@@ -19,6 +19,9 @@ const MuiThemeProvider: React.FC<Props> = ({ children }) => {
     palette: {
       mode: isLight ? "light" : "dark",
     },
+    typography: {
+      fontFamily: "Montserrat",
+    },
   });
 
   return (
