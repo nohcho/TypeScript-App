@@ -1,9 +1,7 @@
 import React from "react";
-
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import StyledEngineProvider from "@mui/material/StyledEngineProvider";
-
 import { useAppSelector } from "../store";
 
 interface Props {
@@ -19,7 +17,6 @@ const MuiThemeProvider: React.FC<Props> = ({ children }) => {
     palette: {
       mode: isLight ? "light" : "dark",
       secondary: {
-        // This is green.A700 as hex.
         main: "#fbcc57",
       },
     },
