@@ -6,8 +6,6 @@ import {
   Paper,
   Grid,
   IconButton,
-  Backdrop,
-  CircularProgress,
   Box,
   OutlinedInput,
 } from "@mui/material";
@@ -19,6 +17,7 @@ import { setThemeMode } from "../store/themeSlice";
 import { getUsers } from "../services/user.services";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import Loader from "../components/Loader";
 
 function Users() {
   const dispatch = useAppDispatch();
@@ -45,6 +44,11 @@ function Users() {
   useEffect((): void => {
     getUsersFunction();
   }, [getUsersFunction]);
+
+  if (load) {
+    return <Loader />;
+  }
+
   return (
     <Container sx={{ height: "100%", width: 800 }}>
       <Box sx={{ justifyContent: "space-between", display: "flex" }}>
@@ -116,14 +120,6 @@ function Users() {
               </Grid>
             );
           })}
-      {load && (
-        <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={load}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      )}
     </Container>
   );
 }

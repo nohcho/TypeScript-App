@@ -6,8 +6,6 @@ import {
   ListItemText,
   Box,
   IconButton,
-  Backdrop,
-  CircularProgress,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
@@ -21,6 +19,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DialogModal from "../components/ModalOpen";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import Loader from "../components/Loader";
 
 const User = () => {
   const dispatch = useAppDispatch();
@@ -43,6 +42,11 @@ const User = () => {
   useEffect((): void => {
     dispatch(getUserById(+id!));
   }, [id, dispatch]);
+
+  if (load) {
+    return <Loader />;
+  }
+
   return (
     <Container sx={{ height: "100%", width: 800 }}>
       {userId.map((user) => {
@@ -82,14 +86,6 @@ const User = () => {
       </Box>
 
       <Task />
-      {load && (
-        <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={load}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      )}
     </Container>
   );
 };
