@@ -12,7 +12,7 @@ const Form = () => {
 
   const [text, setText] = useState<string>("");
   const [isEmpty, setIsEmpty] = useState<boolean>(false);
-  const [disabledBtn, setdisabledBtn] = useState<boolean>(false);
+  const [disabledBtn, setDisabledBtn] = useState<boolean>(false);
 
   const load = useAppSelector((state) => state.todo.loading);
   const { todo } = useAppSelector((state) => state.todo);
@@ -39,10 +39,10 @@ const Form = () => {
         })
       );
       setText("");
-      setdisabledBtn(false);
+      setDisabledBtn(false);
     } else {
       setIsEmpty(true);
-      setdisabledBtn(true);
+      setDisabledBtn(true);
       setText("");
     }
   };
@@ -50,7 +50,7 @@ const Form = () => {
   const inputHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
     setText(e.target.value);
-    setdisabledBtn(false);
+    setDisabledBtn(false);
     setIsEmpty(false);
   };
   return (

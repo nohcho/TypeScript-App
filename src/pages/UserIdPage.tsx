@@ -4,15 +4,10 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Typography,
-  Dialog,
   Box,
-  DialogContent,
-  DialogActions,
   IconButton,
   Backdrop,
   CircularProgress,
-  DialogTitle,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
@@ -24,6 +19,7 @@ import { setThemeMode } from "../themes/themeSettings";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import DialogModal from "../components/ModalOpen";
 
 const User = () => {
   const dispatch = useAppDispatch();
@@ -35,8 +31,8 @@ const User = () => {
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  const handleModalOpen = (): void => {
-    setIsClicked(!isClicked);
+  const handleClose = (value: string) => {
+    setIsClicked(false);
   };
 
   const handleChangeTheme = (): void => {
@@ -55,40 +51,16 @@ const User = () => {
               <Avatar alt="Remy Sharp" src={require("../assets/avatar.png")} />
             </ListItemAvatar>
             <ListItemText primary={user.name} secondary={user.email} />
-            <Dialog open={isClicked} onClose={handleModalOpen}>
-              <DialogContent sx={{ padding: "10px" }} dividers>
-                <DialogTitle fontSize={20} fontWeight={800}>
-                  Additional information about the user:
-                </DialogTitle>
-                <Typography
-                  gutterBottom
-                  fontSize={20}
-                >{`Address: ${user.address.city}, ${user.address.suite}, ${user.address.street}`}</Typography>
-                <Typography
-                  gutterBottom
-                  fontSize={20}
-                >{`Zip code: ${user.address.zipcode}`}</Typography>
-                <Typography
-                  gutterBottom
-                  fontSize={20}
-                >{`Phone number: ${user.phone}`}</Typography>
-                <Typography
-                  gutterBottom
-                  fontSize={20}
-                >{`Website: ${user.website}`}</Typography>
-                <Typography
-                  gutterBottom
-                  fontSize={20}
-                >{`Company: ${user.company.name}`}</Typography>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleModalOpen}>Close</Button>
-              </DialogActions>
-            </Dialog>
+            <DialogModal
+              title="Additional information about the user:"
+              open={isClicked}
+              users={user}
+              onClose={handleClose}
+            />
           </ListItem>
         );
       })}
-      <Button color="primary" onClick={handleModalOpen}>
+      <Button color="primary" onClick={() => setIsClicked(!isClicked)}>
         More info
       </Button>
       <IconButton onClick={handleChangeTheme}>
