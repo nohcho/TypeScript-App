@@ -36,6 +36,8 @@ const DialogModal = ({
         <Typography
           gutterBottom
           fontSize={20}
+          variant="h1"
+          component="h4"
         >{`Address: ${users.address.city}, ${users.address.suite}, ${users.address.street}`}</Typography>
         <Typography
           gutterBottom
