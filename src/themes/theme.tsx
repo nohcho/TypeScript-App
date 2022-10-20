@@ -18,6 +18,10 @@ const MuiThemeProvider: React.FC<Props> = ({ children }) => {
   const theme = createTheme({
     palette: {
       mode: isLight ? "light" : "dark",
+      secondary: {
+        // This is green.A700 as hex.
+        main: "#fbcc57",
+      },
     },
     typography: {
       fontFamily: "Montserrat",

@@ -16,10 +16,11 @@ import { useAppDispatch, useAppSelector } from "../store/index";
 import { getUserById } from "../services/user.services";
 import Task from "../components/Tasks";
 import { setThemeMode } from "../themes/themeSettings";
-import Brightness6Icon from "@mui/icons-material/Brightness6";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DialogModal from "../components/ModalOpen";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 const User = () => {
   const dispatch = useAppDispatch();
@@ -63,9 +64,15 @@ const User = () => {
       <Button color="primary" onClick={() => setIsClicked(!isClicked)}>
         More info
       </Button>
-      <IconButton onClick={handleChangeTheme}>
-        <Brightness6Icon />
-      </IconButton>
+      {themeMode === "dark" ? (
+        <IconButton onClick={handleChangeTheme} size="large">
+          <DarkModeIcon />
+        </IconButton>
+      ) : (
+        <IconButton onClick={handleChangeTheme} color="secondary">
+          <LightModeIcon fontSize="large" />
+        </IconButton>
+      )}
       <Box>
         <Link to="/" className="text-link">
           <IconButton>

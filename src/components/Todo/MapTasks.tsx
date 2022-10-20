@@ -82,10 +82,14 @@ const MapTasks = () => {
                   <Fragment>
                     {input !== elem.id ? (
                       <Fragment>
-                        <IconButton onClick={() => showInputHandler(elem.id)}>
+                        <IconButton
+                          onClick={() => showInputHandler(elem.id)}
+                          color="primary"
+                        >
                           <Build fontSize="small" />
                         </IconButton>
                         <IconButton
+                          color="primary"
                           edge="end"
                           aria-label="delete"
                           onClick={() => handleRemoveTodo(elem.id)}
@@ -97,6 +101,7 @@ const MapTasks = () => {
                       <>
                         {" "}
                         <IconButton
+                          color="primary"
                           type="submit"
                           onClick={() => updateHandler(elem.id)}
                         >

@@ -17,7 +17,8 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/index";
 import { setThemeMode } from "../store/themeSlice";
 import { getUsers } from "../services/user.services";
-import Brightness6Icon from "@mui/icons-material/Brightness6";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 function Users() {
   const dispatch = useAppDispatch();
@@ -47,9 +48,15 @@ function Users() {
   return (
     <Container sx={{ height: "100%", width: 800 }}>
       <Box sx={{ justifyContent: "space-between", display: "flex" }}>
-        <IconButton onClick={handleChangeTheme}>
-          <Brightness6Icon />
-        </IconButton>{" "}
+        {themeMode === "dark" ? (
+          <IconButton onClick={handleChangeTheme} size="large">
+            <DarkModeIcon />
+          </IconButton>
+        ) : (
+          <IconButton onClick={handleChangeTheme} color="secondary">
+            <LightModeIcon fontSize="large" />
+          </IconButton>
+        )}
         <OutlinedInput
           placeholder="Search user here"
           sx={{ width: "50%" }}
