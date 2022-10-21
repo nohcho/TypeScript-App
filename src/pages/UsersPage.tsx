@@ -5,25 +5,21 @@ import {
   ListItemText,
   Paper,
   Grid,
-  IconButton,
   Box,
-  OutlinedInput,
+  TextField,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/index";
-import { setThemeMode } from "../store/themeSlice";
 import { getUsers } from "../services/user.services";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
 import Loader from "../components/Loader";
+import Header from "../components/Header";
 
 function Users() {
   const dispatch = useAppDispatch();
 
   const { list } = useAppSelector((state) => state.list);
-  const { themeMode } = useAppSelector((state) => state.theme);
   const load = useAppSelector((state) => state.list.loading);
 
   const [searchUser, setSearchUser] = useState<string>("");
@@ -32,10 +28,6 @@ function Users() {
     const userName = `${item.name.toLowerCase()}`;
     return userName.includes(searchUser.toLowerCase());
   });
-
-  const handleChangeTheme = (): void => {
-    dispatch(setThemeMode(themeMode === "dark" ? "light" : "dark"));
-  };
 
   const getUsersFunction = useCallback(async () => {
     await dispatch(getUsers());
@@ -51,19 +43,14 @@ function Users() {
 
   return (
     <Container sx={{ height: "100%", width: 800 }}>
+      <Header />
       <Box sx={{ justifyContent: "space-between", display: "flex" }}>
-        {themeMode === "dark" ? (
-          <IconButton onClick={handleChangeTheme} size="large">
-            <DarkModeIcon />
-          </IconButton>
-        ) : (
-          <IconButton onClick={handleChangeTheme} color="secondary">
-            <LightModeIcon fontSize="large" />
-          </IconButton>
-        )}
-        <OutlinedInput
-          placeholder="Search user here"
-          sx={{ width: "50%" }}
+        <TextField
+          label="Search field"
+          type="search"
+          variant="standard"
+          placeholder="Text here"
+          sx={{ width: "50%", m: "auto", mt: 1 }}
           onChange={(event) => setSearchUser(event.target.value)}
         />
       </Box>

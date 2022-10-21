@@ -2,6 +2,7 @@ import { Box, Button, Paper, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Header from "../Header";
 
 function NotFoundBlock() {
   const [timeLeft, setTimeLeft] = useState(5);
@@ -21,6 +22,8 @@ function NotFoundBlock() {
 
   return (
     <Container maxWidth="sm">
+      <Header />
+
       <Box
         sx={{
           display: "flex",
