@@ -7,6 +7,7 @@ import {
   Grid,
   Box,
   TextField,
+  Badge,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useCallback, useEffect, useState } from "react";
@@ -15,6 +16,7 @@ import { useAppDispatch, useAppSelector } from "../store/index";
 import { getUsers } from "../services/user.services";
 import Loader from "../components/Loader";
 import Header from "../components/Header";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 
 function Users() {
   const dispatch = useAppDispatch();
@@ -40,7 +42,6 @@ function Users() {
   if (load) {
     return <Loader />;
   }
-
   return (
     <Container sx={{ height: "100%", width: 800 }}>
       <Header />
@@ -53,6 +54,16 @@ function Users() {
           sx={{ width: "50%", m: "auto", mt: 1 }}
           onChange={(event) => setSearchUser(event.target.value)}
         />
+
+        <Badge
+          badgeContent={list.length}
+          color="primary"
+          variant="standard"
+          sx={{ mt: 4 }}
+        >
+          {"Total:"}
+          <PeopleAltIcon sx={{ ml: 1 }} color="action" />
+        </Badge>
       </Box>
       {searchUser
         ? filteredUsers.map((user) => {

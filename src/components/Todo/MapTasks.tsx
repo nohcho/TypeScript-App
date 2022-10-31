@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import {
+  Box,
   Grid,
   IconButton,
   Input,
@@ -64,6 +65,7 @@ const MapTasks = () => {
   }, [getTodosFunction, dispatch]);
   return (
     <Fragment>
+      <Box>{` Total: ${findUserTask.length}`}</Box>
       {findUserTask.map((elem) => {
         return (
           <Grid
