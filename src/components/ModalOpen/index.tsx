@@ -7,6 +7,7 @@ import {
   DialogTitle,
   Typography,
 } from "@mui/material";
+import { Box } from "@mui/system";
 import { UsersInfo } from "../../models/index";
 
 type CloseReason = "backdropClick" | "escapeKeyDown" | "closeButtonClick";
@@ -21,7 +22,6 @@ const DialogModal = ({
   open,
   onClose,
   users,
-  ...props
 }: DialogProps) => {
   return (
     <MuiDialog
@@ -30,29 +30,44 @@ const DialogModal = ({
       open={open}
     >
       <DialogContent sx={{ padding: "10px" }} dividers>
-        <DialogTitle fontSize={20} fontWeight={800}>
+        <DialogTitle fontSize={24} fontWeight={800}>
           {title}
         </DialogTitle>
-        <Typography
-          gutterBottom
-          fontSize={20}
-        >{`Address: ${users.address.city}, ${users.address.suite}, ${users.address.street}`}</Typography>
-        <Typography
-          gutterBottom
-          fontSize={20}
-        >{`Zip code: ${users.address.zipcode}`}</Typography>
-        <Typography
-          gutterBottom
-          fontSize={20}
-        >{`Phone number: ${users.phone}`}</Typography>
-        <Typography
-          gutterBottom
-          fontSize={20}
-        >{`Website: ${users.website}`}</Typography>
-        <Typography
-          gutterBottom
-          fontSize={20}
-        >{`Company: ${users.company.name}`}</Typography>
+        <Typography gutterBottom fontSize={20}>
+          <Box component="h4" display="inline">
+            {" "}
+            Address:{" "}
+          </Box>
+          {` ${users.address.city}, ${users.address.suite}, ${users.address.street}`}
+        </Typography>
+        <Typography gutterBottom fontSize={20}>
+          <Box component="h4" display="inline">
+            {" "}
+            Zip code:{" "}
+          </Box>
+          {`${users.address.zipcode}`}
+        </Typography>
+        <Typography gutterBottom fontSize={20}>
+          {" "}
+          <Box component="h4" display="inline">
+            Phone number:{" "}
+          </Box>
+          {`${users.phone}`}
+        </Typography>
+        <Typography gutterBottom fontSize={20}>
+          {" "}
+          <Box component="h4" display="inline">
+            Website:{" "}
+          </Box>
+          {` ${users.website}`}
+        </Typography>
+        <Typography gutterBottom fontSize={20}>
+          {" "}
+          <Box component="h4" display="inline">
+            Company:{" "}
+          </Box>
+          {` ${users.company.name}`}
+        </Typography>
       </DialogContent>
       <DialogActions>
         <Button onClick={() => onClose("closeButtonClick")}> Close </Button>
