@@ -23,7 +23,7 @@ export const todoSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addTodos.fulfilled, (state, action: PayloadAction<TodoList>) => {
-        state.todo.push(action.payload);
+        state.todo.push({ ...action.payload, id: state.todo.length + 1 });
         state.loading = false;
       })
       .addCase(addTodos.pending, (state) => {
@@ -46,9 +46,15 @@ export const todoSlice = createSlice({
       .addCase(
         patchTodos.fulfilled,
         (state, action: PayloadAction<TodoList>) => {
-          state.todo = state.todo.map((elem) =>
-            elem.id === action.payload.id ? action.payload : elem
-          );
+          console.log(action.payload);
+
+          state.todo = state.todo.map((elem) => {
+            if (elem.id === action.payload.id) {
+              elem.title = action.payload.title;
+              return elem;
+            }
+            return elem;
+          });
         }
       );
   },

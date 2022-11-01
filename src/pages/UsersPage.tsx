@@ -50,7 +50,7 @@ function Users() {
           label="Search field"
           type="search"
           variant="standard"
-          placeholder="Text here"
+          placeholder="Search"
           sx={{ width: "50%", m: "auto", mt: 1 }}
           onChange={(event) => setSearchUser(event.target.value)}
         />

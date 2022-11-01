@@ -28,7 +28,7 @@ export const patchTodos = createAsyncThunk<
     const res = await request.patch("/todos/" + id, {
       title,
     });
-    return res.data;
+    return { title, id };
   } catch (e) {
     return thunkAPI.rejectWithValue(e);
   }
