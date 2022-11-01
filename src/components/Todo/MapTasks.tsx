@@ -6,6 +6,7 @@ import {
   Input,
   ListItem,
   ListItemText,
+  Pagination,
   Paper,
 } from "@mui/material";
 import { useCallback, useEffect } from "react";
@@ -24,15 +25,24 @@ const MapTasks = () => {
 
   const [input, setInput] = useState<number>();
   const [text, setText] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
 
   const { todo } = useAppSelector((state) => state.todo);
   const { userId } = useAppSelector((state) => state.list);
 
   const getUserId = userId.map((elem) => elem.id);
 
+  const limit = 5;
+  const minIndex = (page - 1) * limit;
+  const maxIndex = page * limit;
+
   const findUserTask = todo
     .filter((elem) => elem.userId?.toString() === getUserId.toString())
     .reverse();
+    
+  const todoList = findUserTask.filter(
+    (item, index) => index >= minIndex && index < maxIndex
+  );
 
   const getTodosFunction = useCallback(async () => {
     await dispatch(getTodos());
@@ -60,13 +70,17 @@ const MapTasks = () => {
     dispatch(deleteTodos(i));
   };
 
+  const handleChangePage = (newPage: number) => {
+    setPage(newPage);
+  };
+
   useEffect((): void => {
     getTodosFunction();
   }, [getTodosFunction, dispatch]);
   return (
     <Fragment>
       <Box>{` Total: ${findUserTask.length}`}</Box>
-      {findUserTask.map((elem) => {
+      {todoList.map((elem) => {
         return (
           <Grid
             sx={{
@@ -128,6 +142,12 @@ const MapTasks = () => {
           </Grid>
         );
       })}
+      <Pagination
+        size="small"
+        page={page}
+        count={Math.ceil(findUserTask.length / limit)}
+        onChange={(e, num: number) => handleChangePage(num)}
+      />
     </Fragment>
   );
 };

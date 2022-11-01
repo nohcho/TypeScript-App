@@ -17,12 +17,7 @@ interface DialogProps extends MuiDialogProps {
   onClose: (reason: CloseReason) => void;
 }
 
-const DialogModal = ({
-  title,
-  open,
-  onClose,
-  users,
-}: DialogProps) => {
+const DialogModal = ({ title, open, onClose, users }: DialogProps) => {
   return (
     <MuiDialog
       onClose={(_, reason) => onClose(reason)}
