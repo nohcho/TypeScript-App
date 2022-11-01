@@ -39,7 +39,7 @@ const MapTasks = () => {
   const findUserTask = todo
     .filter((elem) => elem.userId?.toString() === getUserId.toString())
     .reverse();
-    
+
   const todoList = findUserTask.filter(
     (item, index) => index >= minIndex && index < maxIndex
   );
@@ -142,12 +142,14 @@ const MapTasks = () => {
           </Grid>
         );
       })}
-      <Pagination
-        size="small"
-        page={page}
-        count={Math.ceil(findUserTask.length / limit)}
-        onChange={(e, num: number) => handleChangePage(num)}
-      />
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Pagination
+          size="small"
+          page={page}
+          count={Math.ceil(findUserTask.length / limit)}
+          onChange={(e, num: number) => handleChangePage(num)}
+        />
+      </Box>
     </Fragment>
   );
 };
