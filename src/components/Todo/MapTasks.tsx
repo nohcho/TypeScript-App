@@ -142,12 +142,13 @@ const MapTasks = () => {
           </Grid>
         );
       })}
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ display: "flex", justifyContent: "center", p: 2 }}>
         <Pagination
           size="small"
           page={page}
           count={Math.ceil(findUserTask.length / limit)}
           onChange={(e, num: number) => handleChangePage(num)}
+          color="primary"
         />
       </Box>
     </Fragment>
