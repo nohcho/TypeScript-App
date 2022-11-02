@@ -18,6 +18,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DialogModal from "../components/ModalOpen";
 import Loader from "../components/Loader";
 import Header from "../components/Header";
+import NotFound from "./NotFoundPage";
 
 const User = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,8 @@ const User = () => {
   const { userId } = useAppSelector((state) => state.list);
 
   const load = useAppSelector((state) => state.list.loading);
+
+  const notFound = useAppSelector((state) => state.list.notFound);
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
@@ -36,6 +39,10 @@ const User = () => {
   useEffect((): void => {
     dispatch(getUserById(+id!));
   }, [id, dispatch]);
+
+  if (notFound) {
+    return <NotFound />;
+  }
 
   if (load) {
     return <Loader />;

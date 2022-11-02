@@ -99,7 +99,7 @@ const MapTasks = () => {
                     {input !== elem.id ? (
                       <Fragment>
                         <IconButton
-                          onClick={() => showInputHandler(elem.id)}
+                          onClick={() => showInputHandler(elem.id ?? 0)}
                           color="primary"
                         >
                           <Build fontSize="small" />
@@ -108,7 +108,7 @@ const MapTasks = () => {
                           color="primary"
                           edge="end"
                           aria-label="delete"
-                          onClick={() => handleRemoveTodo(elem.id)}
+                          onClick={() => handleRemoveTodo(elem.id ?? 0)}
                         >
                           <DeleteIcon />
                         </IconButton>
@@ -119,7 +119,7 @@ const MapTasks = () => {
                         <IconButton
                           color="primary"
                           type="submit"
-                          onClick={() => updateHandler(elem.id)}
+                          onClick={() => updateHandler(elem.id ?? 0)}
                         >
                           <Save fontSize="small" />
                         </IconButton>{" "}

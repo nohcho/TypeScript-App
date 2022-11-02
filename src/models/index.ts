@@ -23,7 +23,7 @@ export interface UsersInfo {
 
 export interface TodoList {
   userId?: number;
-  id: number;
+  id?: number;
   title: string;
   completed?: boolean;
 }

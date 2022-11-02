@@ -5,12 +5,14 @@ interface usersList {
   list: UsersInfo[];
   userId: UsersInfo[];
   loading: boolean;
+  notFound: boolean;
 }
 
 const initialState: usersList = {
   list: [],
   userId: [],
   loading: false,
+  notFound: false,
 };
 
 export const usersSlice = createSlice({
@@ -27,6 +29,7 @@ export const usersSlice = createSlice({
       .addCase(
         getUsers.fulfilled,
         (state, action: PayloadAction<UsersInfo[]>) => {
+          state.notFound = false;
           state.loading = false;
           state.list = action.payload;
         }
@@ -44,6 +47,10 @@ export const usersSlice = createSlice({
       )
       .addCase(getUserById.pending, (state) => {
         state.loading = true;
+      })
+      .addCase(getUserById.rejected, (state) => {
+        state.loading = false;
+        state.notFound = true;
       });
   },
 });

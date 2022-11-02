@@ -33,7 +33,6 @@ const Form = () => {
       dispatch(
         addTodos({
           userId: +currentUserId,
-          id: todo.length + 1,
           title: text,
           completed: false,
         })
