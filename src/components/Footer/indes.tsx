@@ -8,7 +8,7 @@ const Footer = () => {
       <Box
         bgcolor="primary.main"
         color="primary"
-        sx={{ p: 1.6, mt: 3 }}
+        sx={{ mt: 3, height: 64, display: "flex", alignItems: "center" }}
         textAlign="center"
       >
         <Container
