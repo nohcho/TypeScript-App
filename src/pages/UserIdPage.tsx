@@ -17,7 +17,6 @@ import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DialogModal from "../components/ModalOpen";
 import Loader from "../components/Loader";
-import Header from "../components/Header";
 import NotFound from "./NotFoundPage";
 
 const User = () => {
@@ -49,7 +48,6 @@ const User = () => {
   }
   return (
     <Container sx={{ height: "100%", width: 900 }}>
-      <Header />
       {userId.map((user) => {
         return (
           <ListItem key={user.id}>

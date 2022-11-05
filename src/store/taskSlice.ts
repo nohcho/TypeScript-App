@@ -46,8 +46,6 @@ export const todoSlice = createSlice({
       .addCase(
         patchTodos.fulfilled,
         (state, action: PayloadAction<TodoList>) => {
-          console.log(action.payload);
-
           state.todo = state.todo.map((elem) => {
             if (elem.id === action.payload.id) {
               elem.title = action.payload.title;

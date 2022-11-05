@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/index";
 import { getUsers } from "../services/user.services";
 import Loader from "../components/Loader";
-import Header from "../components/Header";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 
 function Users() {
@@ -44,7 +43,6 @@ function Users() {
   }
   return (
     <Container sx={{ height: "100%", width: 800 }}>
-      <Header />
       <Box sx={{ justifyContent: "space-between", display: "flex" }}>
         <TextField
           label="Search field"
