@@ -1,11 +1,11 @@
 import { Box, Link, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import TelegramIcon from "@mui/icons-material/Telegram";
+
 const Footer = () => {
   return (
     <footer>
       <Box
-
         bgcolor="primary.main"
         color="primary"
         sx={{ p: 1.6, mt: 3 }}
