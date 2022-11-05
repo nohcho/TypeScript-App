@@ -16,7 +16,7 @@ const Header = () => {
   };
   return (
     <Fragment>
-      <AppBar sx={{ alignItems: "center" }}>
+      <AppBar sx={{ alignItems: "center" }} position={'static'}>
         <Toolbar>
           <Typography>TypeScript App</Typography>
           {themeMode === "dark" ? (

@@ -5,6 +5,7 @@ const Footer = () => {
   return (
     <footer>
       <Box
+
         bgcolor="primary.main"
         color="primary"
         sx={{ p: 1.6, mt: 3 }}
