@@ -30,7 +30,7 @@ const Header = () => {
           )}
         </Toolbar>
       </AppBar>
-      <Toolbar />
+      {/* <Toolbar /> */}
     </Fragment>
   );
 };
