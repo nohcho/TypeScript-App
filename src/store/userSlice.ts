@@ -6,6 +6,7 @@ interface usersList {
   userId: UsersInfo[];
   loading: boolean;
   notFound: boolean;
+  fakeAuth: boolean;
 }
 
 const initialState: usersList = {
@@ -13,6 +14,7 @@ const initialState: usersList = {
   userId: [],
   loading: false,
   notFound: false,
+  fakeAuth: false,
 };
 
 export const usersSlice = createSlice({

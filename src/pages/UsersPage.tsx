@@ -105,7 +105,7 @@ function Users() {
                         src={require("../assets/avatar.png")}
                       />
                     </ListItemAvatar>
-                    <Link to={`/user/${user.id}`} className="text-link">
+                    <Link to={`home/user/${user.id}`} className="text-link">
                       <ListItemText
                         primary={user.name}
                         secondary={user.email}

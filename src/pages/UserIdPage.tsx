@@ -69,7 +69,7 @@ const User = () => {
       </Button>
 
       <Box>
-        <Link to="/" className="text-link">
+        <Link to="/home" className="text-link">
           <IconButton>
             <ArrowBackIcon color="primary" />
           </IconButton>

@@ -3,18 +3,20 @@ import Users from "./pages/UsersPage";
 import { Routes, Route } from "react-router-dom";
 import User from "./pages/UserIdPage";
 import NotFound from "./pages/NotFoundPage";
-import Header from "./components/Header";
-import Footer from "./components/Footer/indes";
+import LoginPage from "./pages/LogInPage";
+import Layout from "./components/Layout";
+
 function App() {
   return (
     <div className="App">
-      <Header />
       <Routes>
-        <Route path="/" element={<Users />} />
-        <Route path="/user/:id" element={<User />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<Layout />}>
+          <Route index element={<Users />} />
+          <Route path="home/user/:id" element={<User />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
-      <Footer />
     </div>
   );
 }

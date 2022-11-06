@@ -15,7 +15,7 @@ function NotFoundBlock() {
       if (timeLeft >= 1) setTimeLeft(timeLeft - 1);
     }, 1000);
     if (timeLeft === 0) {
-      navigate("/");
+      navigate("/home");
     }
   }, [timeLeft, navigate]);
 
@@ -47,7 +47,7 @@ function NotFoundBlock() {
           </Typography>
           <Link to={"/"} className="text-link">
             <Button variant="outlined" size="small">
-              <Link to="/" className="text-link">
+              <Link to="/home" className="text-link">
                 Back home
               </Link>
             </Button>
