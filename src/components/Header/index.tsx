@@ -31,10 +31,9 @@ const Header = () => {
             </IconButton>
           )}
           <IconButton
-            sx={{ position: "absolute", left: 10,color:"white" }}
+            sx={{ position: "absolute", left: 10, color: "white" }}
             disableRipple={true}
             edge="end"
-            
           >
             <Link to="/" className="text-link">
               <LogoutIcon />
