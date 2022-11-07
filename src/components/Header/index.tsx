@@ -5,8 +5,8 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { setThemeMode } from "../../store/themeSlice";
-import { Link } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { logout } from "../../store/authSlice";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -16,6 +16,11 @@ const Header = () => {
   const handleChangeTheme = (): void => {
     dispatch(setThemeMode(themeMode === "dark" ? "light" : "dark"));
   };
+
+  function handleClickLogout() {
+    dispatch(logout());
+  }
+
   return (
     <Fragment>
       <AppBar elevation={0} position={"static"}>
@@ -31,14 +36,12 @@ const Header = () => {
             </IconButton>
           )}
           <IconButton
-            sx={{ position: "absolute", left: 10,color:"white" }}
+            sx={{ position: "absolute", left: 10, color: "white" }}
             disableRipple={true}
             edge="end"
-            
+            onClick={handleClickLogout}
           >
-            <Link to="/" className="text-link">
-              <LogoutIcon />
-            </Link>
+            <LogoutIcon />
           </IconButton>
         </Toolbar>
       </AppBar>

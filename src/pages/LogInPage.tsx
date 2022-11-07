@@ -6,15 +6,17 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { validation } from "../helpers/validation";
+import { useAppDispatch } from "../store";
+import { login } from "../store/authSlice";
 
 export default function LoginPage() {
-  const navigate = useNavigate();
-  function handleSubmit(): void {
-    navigate("/home");
+  const dispatch = useAppDispatch();
+  function handleSubmit(value: any): void {
+    dispatch(login(value));
   }
+
   const formik = useFormik({
     initialValues: {
       password: "",

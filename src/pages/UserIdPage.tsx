@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/index";
 import { getUserById } from "../services/user.services";
 import Task from "../components/Tasks";
@@ -46,6 +46,11 @@ const User = () => {
   if (load) {
     return <Loader />;
   }
+
+  const isAuthenticated = localStorage.getItem("auth.user") as any;
+  if (!isAuthenticated) {
+    return <Navigate to={"/signin"} />;
+  }
   return (
     <Container sx={{ height: "100%", width: 900 }}>
       {userId.map((user) => {
@@ -69,7 +74,7 @@ const User = () => {
       </Button>
 
       <Box>
-        <Link to="/home" className="text-link">
+        <Link to="/" className="text-link">
           <IconButton>
             <ArrowBackIcon color="primary" />
           </IconButton>

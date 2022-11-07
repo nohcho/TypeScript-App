@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import usersReducer from "./userSlice";
 import tasksReducer from "./taskSlice";
 import themeReducer from "./themeSlice";
+import loginReducer from "./authSlice";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
     list: usersReducer,
     todo: tasksReducer,
     theme: themeReducer,
+    login: loginReducer,
   },
 });
 
