@@ -1,7 +1,7 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function NotFoundBlock() {
   const [timeLeft, setTimeLeft] = useState(5);
@@ -19,6 +19,11 @@ function NotFoundBlock() {
     }
   }, [timeLeft, navigate]);
 
+  const isAuthenticated = localStorage.getItem("auth.user") as any;
+  if (!isAuthenticated) {
+    return <Navigate to={"/signin"} />;
+  }
+  
   return (
     <Container maxWidth="sm">
       <Box
