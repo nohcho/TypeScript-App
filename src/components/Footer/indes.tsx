@@ -11,7 +11,7 @@ const Footer = () => {
             maxWidth="lg"
             sx={{ justifyContent: "center", display: "flex" }}
           >
-            <Typography sx={{ mr: 1 }} color="white">
+            <Typography color="white" sx={{ mr: 2 }}>
               Contact me:
             </Typography>
             <Link href="https://t.me/tasuhanov" color="inherit">
