@@ -23,7 +23,7 @@ function NotFoundBlock() {
   if (!isAuthenticated) {
     return <Navigate to={"/signin"} />;
   }
-  
+
   return (
     <Container maxWidth="sm">
       <Box

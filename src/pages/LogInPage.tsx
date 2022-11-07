@@ -9,11 +9,12 @@ import {
 import { useFormik } from "formik";
 import { validation } from "../helpers/validation";
 import { useAppDispatch } from "../store";
-import { login } from "../store/authSlice";
+import { login } from "../services/auth.services";
+import { MyFormProps } from "../models";
 
 export default function LoginPage() {
   const dispatch = useAppDispatch();
-  function handleSubmit(value: any): void {
+  function handleSubmit(value: MyFormProps): void {
     dispatch(login(value));
   }
 

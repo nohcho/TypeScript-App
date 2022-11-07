@@ -15,7 +15,6 @@ const Form = () => {
   const [disabledBtn, setDisabledBtn] = useState<boolean>(false);
 
   const load = useAppSelector((state) => state.todo.loading);
-  const { todo } = useAppSelector((state) => state.todo);
 
   const currentUserId = userIdFromUrl ?? 0;
 

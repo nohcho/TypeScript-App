@@ -27,3 +27,12 @@ export interface TodoList {
   title: string;
   completed?: boolean;
 }
+
+export interface Auth {
+  user: string;
+  isAuthenticated: boolean;
+}
+export interface MyFormProps {
+  password?: string;
+  email?: string;
+}

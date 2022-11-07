@@ -1,23 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export const login = createAsyncThunk(
-  "auth/login",
-  async (params: { email: string; password: string }, thunkAPI) => {
-    try {
-      const response = params;
-      console.log(params);
-
-      return response;
-    } catch (e) {
-      thunkAPI.rejectWithValue(e);
-    }
-  }
-);
-
-interface Auth {
-  user: string;
-  isAuthenticated: boolean;
-}
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { login } from "../services/auth.services";
+import { Auth } from "../models/index";
 
 const initialState: Auth = {
   user: "",
