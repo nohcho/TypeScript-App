@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { login } from "../services/auth.services";
 import { Auth } from "../models/index";
+import { user } from "../constants";
 
 const initialState: Auth = {
   user: "",
@@ -26,7 +27,7 @@ const authSlice = createSlice({
         login.fulfilled.toString(),
         (state, action: PayloadAction<string>) => {
           state.isAuthenticated = false;
-          localStorage.setItem("auth.user", action.payload);
+          localStorage.setItem(user, action.payload);
           window.location.href = "/";
           state.user = action.payload;
         }

@@ -18,6 +18,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DialogModal from "../components/ModalOpen";
 import Loader from "../components/Loader";
 import NotFound from "./NotFoundPage";
+import {user} from "../constants"
 
 const User = () => {
   const dispatch = useAppDispatch();
@@ -47,7 +48,7 @@ const User = () => {
     return <Loader />;
   }
 
-  const isAuthenticated = localStorage.getItem("auth.user") as any;
+  const isAuthenticated = localStorage.getItem(user);
   if (!isAuthenticated) {
     return <Navigate to={"/signin"} />;
   }
