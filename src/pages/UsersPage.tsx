@@ -55,7 +55,7 @@ function Users() {
         />
 
         <Badge
-          badgeContent={list.length}
+          badgeContent={filteredUsers.length}
           color="primary"
           variant="standard"
           sx={{ mt: 4 }}
@@ -64,59 +64,29 @@ function Users() {
           <PeopleAltIcon sx={{ ml: 1 }} color="action" />
         </Badge>
       </Box>
-      {searchUser
-        ? filteredUsers.map((user) => {
-            return (
-              <Grid xs={12} key={user.id} item={true}>
-                {" "}
-                <Paper
-                  elevation={2}
-                  sx={{ padding: "20px", margin: "auto", textAlign: "center" }}
-                >
-                  <ListItem alignItems="flex-start" key={user.id}>
-                    <ListItemAvatar>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src={require("../assets/avatar.png")}
-                      />
-                    </ListItemAvatar>
-                    <Link to={`/user/${user.id}`} className="text-link">
-                      <ListItemText
-                        primary={user.name}
-                        secondary={user.email}
-                      />
-                    </Link>
-                  </ListItem>
-                </Paper>
-              </Grid>
-            );
-          })
-        : list.map((user) => {
-            return (
-              <Grid xs={12} key={user.id} item={true}>
-                {" "}
-                <Paper
-                  elevation={2}
-                  sx={{ padding: "20px", margin: "auto", textAlign: "center" }}
-                >
-                  <ListItem alignItems="flex-start" key={user.id}>
-                    <ListItemAvatar>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src={require("../assets/avatar.png")}
-                      />
-                    </ListItemAvatar>
-                    <Link to={`/user/${user.id}`} className="text-link">
-                      <ListItemText
-                        primary={user.name}
-                        secondary={user.email}
-                      />
-                    </Link>
-                  </ListItem>
-                </Paper>
-              </Grid>
-            );
-          })}
+      {filteredUsers.map((user) => {
+        return (
+          <Grid xs={12} key={user.id} item={true}>
+            {" "}
+            <Paper
+              elevation={2}
+              sx={{ padding: "20px", margin: "auto", textAlign: "center" }}
+            >
+              <ListItem alignItems="flex-start" key={user.id}>
+                <ListItemAvatar>
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={require("../assets/avatar.png")}
+                  />
+                </ListItemAvatar>
+                <Link to={`/user/${user.id}`} className="text-link">
+                  <ListItemText primary={user.name} secondary={user.email} />
+                </Link>
+              </ListItem>
+            </Paper>
+          </Grid>
+        );
+      })}
     </Container>
   );
 }
