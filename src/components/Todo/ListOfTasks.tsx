@@ -9,6 +9,7 @@ import {
   Pagination,
   Paper,
   TextField,
+  Typography,
 } from "@mui/material";
 import { useCallback, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -51,6 +52,8 @@ const ListOfTasks = () => {
     (item, index) => index >= minIndex && index < maxIndex
   );
 
+  const isPlural = todoList.length === 1 || todoList.length === 0 ? "" : "s"
+  
   const getTodosFunction = useCallback(async () => {
     await dispatch(getTodos());
   }, [dispatch]);
@@ -86,7 +89,7 @@ const ListOfTasks = () => {
   }, [getTodosFunction, dispatch]);
   return (
     <Fragment>
-      <Box>{` Total: ${searchFilteredTodos.length}`}</Box>
+      <Typography variant="h5" color="primary">{` ${todoList.length} task${isPlural} of total ${findUserTask.length} tasks`}</Typography>
       <TextField
         label="Search field"
         color="primary"
