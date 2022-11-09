@@ -53,7 +53,8 @@ const ListOfTasks = () => {
   );
 
   const isPlural = todoList.length === 1 || todoList.length === 0 ? "" : "s"
-  
+  const isPluralTotal = findUserTask.length === 1 || findUserTask.length === 0 ? "" : "s"
+
   const getTodosFunction = useCallback(async () => {
     await dispatch(getTodos());
   }, [dispatch]);
@@ -89,7 +90,7 @@ const ListOfTasks = () => {
   }, [getTodosFunction, dispatch]);
   return (
     <Fragment>
-      <Typography variant="h5" color="primary">{` ${todoList.length} task${isPlural} of total ${findUserTask.length} tasks`}</Typography>
+      <Typography variant="h5" color="primary">{` ${todoList.length} task${isPlural} of total ${findUserTask.length} task${isPluralTotal}`}</Typography>
       <TextField
         label="Search field"
         color="primary"
