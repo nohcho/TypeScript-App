@@ -8,6 +8,7 @@ import {
   ListItemText,
   Pagination,
   Paper,
+  TextField,
 } from "@mui/material";
 import { useCallback, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -20,12 +21,13 @@ import {
 import { Build, Save } from "@mui/icons-material";
 import { ChangeEvent } from "react";
 
-const MapTasks = () => {
+const ListOfTasks = () => {
   const dispatch = useAppDispatch();
 
   const [input, setInput] = useState<number>();
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<number>(1);
+  const [searchTodo, setSearchTodo] = useState<string>("");
 
   const { todo } = useAppSelector((state) => state.todo);
   const { userId } = useAppSelector((state) => state.list);
@@ -40,7 +42,12 @@ const MapTasks = () => {
     .filter((elem) => elem.userId?.toString() === getUserId.toString())
     .reverse();
 
-  const todoList = findUserTask.filter(
+  const searchTodos = findUserTask.filter((item) => {
+    const userName = `${item.title.toLowerCase()}`;
+    return userName.includes(searchTodo.toLowerCase());
+  });
+
+  const todoList = searchTodos.filter(
     (item, index) => index >= minIndex && index < maxIndex
   );
 
@@ -79,7 +86,18 @@ const MapTasks = () => {
   }, [getTodosFunction, dispatch]);
   return (
     <Fragment>
-      <Box>{` Total: ${findUserTask.length}`}</Box>
+      <Box>{` Total: ${searchTodos.length}`}</Box>
+      <TextField
+        label="Search field"
+        color="primary"
+        type="search"
+        variant="standard"
+        placeholder="Search"
+        sx={{ width: "30%", m: "auto", mt: 1 }}
+        onChange={(event) => setSearchTodo(event.target.value)}
+        helperText="Find a task"
+      />
+
       {todoList.map((elem) => {
         return (
           <Grid
@@ -146,7 +164,7 @@ const MapTasks = () => {
         <Pagination
           size="small"
           page={page}
-          count={Math.ceil(findUserTask.length / limit)}
+          count={Math.ceil(searchTodos.length / limit)}
           onChange={(e, num: number) => handleChangePage(num)}
           color="primary"
         />
@@ -155,4 +173,4 @@ const MapTasks = () => {
   );
 };
 
-export default MapTasks;
+export default ListOfTasks;

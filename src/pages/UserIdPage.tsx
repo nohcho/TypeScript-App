@@ -18,7 +18,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DialogModal from "../components/ModalOpen";
 import Loader from "../components/Loader";
 import NotFound from "./NotFoundPage";
-import {user} from "../constants"
+import { user } from "../constants";
 
 const User = () => {
   const dispatch = useAppDispatch();

@@ -1,6 +1,6 @@
 import { Paper } from "@mui/material";
 import Form from "./Todo/Form";
-import MapTasks from "./Todo/MapTasks";
+import ListOfTasks from "./Todo/ListOfTasks";
 
 const Task = () => {
   return (
@@ -9,7 +9,7 @@ const Task = () => {
     >
       <Form />
       <Paper>
-        <MapTasks />
+        <ListOfTasks />
       </Paper>
     </Paper>
   );

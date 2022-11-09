@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Navigate } from "react-router-dom";
 import Users from "../pages/UsersPage";
-import {user} from "../constants"
+import { user } from "../constants";
 
 const Auth: FC = () => {
   const isAuthenticated = localStorage.getItem(user);

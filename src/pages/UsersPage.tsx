@@ -45,6 +45,7 @@ function Users() {
     <Container sx={{ height: "100%", width: 800 }}>
       <Box sx={{ justifyContent: "space-between", display: "flex" }}>
         <TextField
+          color="primary"
           label="Search field"
           type="search"
           variant="standard"

@@ -2,7 +2,7 @@ import { Box, Button, Paper, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import {user} from "../../constants"
+import { user } from "../../constants";
 
 function NotFoundBlock() {
   const [timeLeft, setTimeLeft] = useState(5);
