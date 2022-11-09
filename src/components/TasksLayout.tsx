@@ -2,7 +2,7 @@ import { Paper } from "@mui/material";
 import Form from "./Todo/Form";
 import ListOfTasks from "./Todo/ListOfTasks";
 
-const Task = () => {
+const TasksLayout = () => {
   return (
     <Paper
       sx={{ padding: "20px", margin: "auto", textAlign: "center", width: 900 }}
@@ -15,4 +15,4 @@ const Task = () => {
   );
 };
 
-export default Task;
+export default TasksLayout;

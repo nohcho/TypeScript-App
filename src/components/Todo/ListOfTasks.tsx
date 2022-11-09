@@ -42,12 +42,12 @@ const ListOfTasks = () => {
     .filter((elem) => elem.userId?.toString() === getUserId.toString())
     .reverse();
 
-  const searchTodos = findUserTask.filter((item) => {
+  const searchFilteredTodos = findUserTask.filter((item) => {
     const userName = `${item.title.toLowerCase()}`;
     return userName.includes(searchTodo.toLowerCase());
   });
 
-  const todoList = searchTodos.filter(
+  const todoList = searchFilteredTodos.filter(
     (item, index) => index >= minIndex && index < maxIndex
   );
 
@@ -86,7 +86,7 @@ const ListOfTasks = () => {
   }, [getTodosFunction, dispatch]);
   return (
     <Fragment>
-      <Box>{` Total: ${searchTodos.length}`}</Box>
+      <Box>{` Total: ${searchFilteredTodos.length}`}</Box>
       <TextField
         label="Search field"
         color="primary"
@@ -164,7 +164,7 @@ const ListOfTasks = () => {
         <Pagination
           size="small"
           page={page}
-          count={Math.ceil(searchTodos.length / limit)}
+          count={Math.ceil(searchFilteredTodos.length / limit)}
           onChange={(e, num: number) => handleChangePage(num)}
           color="primary"
         />

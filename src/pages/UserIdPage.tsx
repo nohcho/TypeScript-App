@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/index";
 import { getUserById } from "../services/user.services";
-import Task from "../components/Tasks";
+import TasksLayout from "../components/TasksLayout";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DialogModal from "../components/ModalOpen";
@@ -82,7 +82,7 @@ const User = () => {
         </Link>
       </Box>
 
-      <Task />
+      <TasksLayout />
     </Container>
   );
 };
