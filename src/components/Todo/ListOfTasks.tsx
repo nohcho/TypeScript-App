@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, ChangeEvent } from "react";
 import {
   Box,
   Grid,
@@ -20,7 +20,6 @@ import {
   patchTodos,
 } from "../../services/task.services";
 import { Build, Save } from "@mui/icons-material";
-import { ChangeEvent } from "react";
 
 const ListOfTasks = () => {
   const dispatch = useAppDispatch();
@@ -52,12 +51,18 @@ const ListOfTasks = () => {
     (item, index) => index >= minIndex && index < maxIndex
   );
 
-  const isPlural = todoList.length === 1 || todoList.length === 0 ? "" : "s"
-  const isPluralTotal = findUserTask.length === 1 || findUserTask.length === 0 ? "" : "s"
+  const isPlural = todoList.length === 1 || todoList.length === 0 ? "" : "s";
+  const isPluralTotal =
+    findUserTask.length === 1 || findUserTask.length === 0 ? "" : "s";
 
   const getTodosFunction = useCallback(async () => {
     await dispatch(getTodos());
   }, [dispatch]);
+
+  const handleSearch = (e: string) => {
+    setSearchTodo(e);
+    setPage(1);
+  };
 
   const showInputHandler = (i: number): void => {
     setInput(i);
@@ -90,7 +95,10 @@ const ListOfTasks = () => {
   }, [getTodosFunction, dispatch]);
   return (
     <Fragment>
-      <Typography variant="h5" color="primary">{` ${todoList.length} task${isPlural} of total ${findUserTask.length} task${isPluralTotal}`}</Typography>
+      <Typography
+        variant="h5"
+        color="primary"
+      >{` ${todoList.length} task${isPlural} of total ${findUserTask.length} task${isPluralTotal}`}</Typography>
       <TextField
         label="Search field"
         color="primary"
@@ -98,7 +106,7 @@ const ListOfTasks = () => {
         variant="standard"
         placeholder="Search"
         sx={{ width: "30%", m: "auto", mt: 1 }}
-        onChange={(event) => setSearchTodo(event.target.value)}
+        onChange={(event) => handleSearch(event.target.value)}
         helperText="Find a task"
       />
 
