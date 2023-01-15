@@ -42,7 +42,7 @@ function Users() {
     return <Loader />;
   }
   return (
-    <Container sx={{ width: 800,  minHeight: "100vh" }}>
+    <Container sx={{ width: 800, minHeight: "100vh" }}>
       <Box sx={{ justifyContent: "space-between", display: "flex" }}>
         <TextField
           color="primary"

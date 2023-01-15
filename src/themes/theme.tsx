@@ -7,7 +7,6 @@ import { useAppSelector } from "../store";
 interface Props {
   children: React.ReactNode;
 }
-
 const MuiThemeProvider: React.FC<Props> = ({ children }) => {
   const { themeMode } = useAppSelector((state) => state.theme);
 

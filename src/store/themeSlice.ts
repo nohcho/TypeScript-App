@@ -5,7 +5,7 @@ export interface SettingsState {
 }
 
 const initialState: SettingsState = {
-  themeMode: "light",
+  themeMode: (localStorage.getItem("theme") as string) || "light",
 };
 
 const settingsSlice = createSlice({
@@ -14,6 +14,7 @@ const settingsSlice = createSlice({
   reducers: {
     setThemeMode: (state, action: PayloadAction<string>) => {
       state.themeMode = action.payload;
+      localStorage.setItem("theme", state.themeMode);
     },
   },
 });

@@ -14,7 +14,8 @@ const Header = () => {
   const { themeMode } = useAppSelector((state) => state.theme);
 
   const handleChangeTheme = (): void => {
-    dispatch(setThemeMode(themeMode === "dark" ? "light" : "dark"));
+    const darkOrLight = themeMode === "dark" ? "light" : "dark";
+    dispatch(setThemeMode(darkOrLight));
   };
 
   function handleClickLogout() {
