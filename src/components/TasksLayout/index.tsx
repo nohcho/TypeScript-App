@@ -1,6 +1,6 @@
 import { Paper } from "@mui/material";
-import Form from "./Todo/Form";
-import ListOfTasks from "./Todo/ListOfTasks";
+import Form from "components/Todo/Form";
+import ListOfTasks from "components/Todo/ListOfTasks";
 
 const TasksLayout = () => {
   return (
