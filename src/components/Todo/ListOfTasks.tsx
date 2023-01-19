@@ -13,15 +13,11 @@ import {
 } from "@mui/material";
 import { useCallback, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useAppDispatch, useAppSelector } from "../../store";
-import {
-  deleteTodos,
-  getTodos,
-  patchTodos,
-} from "../../services/task.services";
+import { useAppDispatch, useAppSelector } from "store";
+import { deleteTodos, getTodos, patchTodos } from "services/task.services";
 import { Build, Save } from "@mui/icons-material";
 
-const ListOfTasks = () => {
+export const ListOfTasks = () => {
   const dispatch = useAppDispatch();
 
   const [input, setInput] = useState<number>();
@@ -184,5 +180,3 @@ const ListOfTasks = () => {
     </Fragment>
   );
 };
-
-export default ListOfTasks;

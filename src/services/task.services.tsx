@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import request from "../helpers";
-import { TodoList } from "../models/index";
+import request from "helpers";
+import { TodoList } from "models/index";
 
 export const addTodos = createAsyncThunk<
   TodoList,

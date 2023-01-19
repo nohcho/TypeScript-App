@@ -7,12 +7,12 @@ import {
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
-import { validation } from "../helpers/validation";
-import { useAppDispatch } from "../store";
-import { login } from "../services/auth.services";
-import { MyFormProps } from "../models";
+import { validation } from "helpers/validation";
+import { useAppDispatch } from "store";
+import { login } from "services/auth.services";
+import { MyFormProps } from "models";
 
-export default function LoginPage() {
+export function LogInPage() {
   const dispatch = useAppDispatch();
   function handleSubmit(value: MyFormProps): void {
     dispatch(login(value));

@@ -1,8 +1,7 @@
 import { Paper } from "@mui/material";
-import Form from "components/Todo/Form";
-import ListOfTasks from "components/Todo/ListOfTasks";
+import { Form, ListOfTasks } from "components";
 
-const TasksLayout = () => {
+export const TasksLayout = () => {
   return (
     <Paper
       sx={{ padding: "20px", margin: "auto", textAlign: "center", width: 900 }}
@@ -14,5 +13,3 @@ const TasksLayout = () => {
     </Paper>
   );
 };
-
-export default TasksLayout;

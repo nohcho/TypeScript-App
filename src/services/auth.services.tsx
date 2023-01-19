@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { MyFormProps } from "../models/index";
+import { MyFormProps } from "models/index";
 
 export const login = createAsyncThunk(
   "auth/login",

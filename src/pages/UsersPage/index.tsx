@@ -12,12 +12,12 @@ import {
 import { Container } from "@mui/system";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/index";
-import { getUsers } from "../services/user.services";
-import Loader from "../components/Loader";
+import { useAppDispatch, useAppSelector } from "store";
+import { getUsers } from "services/user.services";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import { Loader } from "components";
 
-function Users() {
+export function UsersPage() {
   const dispatch = useAppDispatch();
 
   const { list } = useAppSelector((state) => state.list);
@@ -74,10 +74,7 @@ function Users() {
             >
               <ListItem alignItems="flex-start" key={user.id}>
                 <ListItemAvatar>
-                  <Avatar
-                    alt="Remy Sharp"
-                    src={require("../assets/avatar.png")}
-                  />
+                  <Avatar alt="Remy Sharp" src={require("assets/avatar.png")} />
                 </ListItemAvatar>
                 <Link to={`/user/${user.id}`} className="text-link">
                   <ListItemText primary={user.name} secondary={user.email} />
@@ -90,5 +87,3 @@ function Users() {
     </Container>
   );
 }
-
-export default Users;

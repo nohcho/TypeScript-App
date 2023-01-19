@@ -1,9 +1,8 @@
 import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
-import Footer from "../Footer/indes";
-import Header from "../Header";
+import { Footer, Header } from "components";
 
-const Layout = () => {
+export const Layout = () => {
   return (
     <Fragment>
       <Header />
@@ -12,5 +11,3 @@ const Layout = () => {
     </Fragment>
   );
 };
-
-export default Layout;

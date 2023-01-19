@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import request from "../helpers";
-import { UsersInfo } from "../models/index";
+import request from "helpers";
+import { UsersInfo } from "models/index";
 
 export const getUsers = createAsyncThunk<UsersInfo[]>(
   "users/getUsers",

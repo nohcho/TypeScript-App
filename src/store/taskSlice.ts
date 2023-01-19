@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TodoList } from "../models/index";
+import { TodoList } from "models/index";
 import {
   addTodos,
   deleteTodos,
   getTodos,
   patchTodos,
-} from "../services/task.services";
+} from "services/task.services";
 interface taskList {
   todo: TodoList[];
   loading: boolean;

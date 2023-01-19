@@ -10,17 +10,15 @@ import {
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/index";
-import { getUserById } from "../services/user.services";
-import TasksLayout from "../components/TasksLayout";
+import { useAppDispatch, useAppSelector } from "store";
+import { getUserById } from "services/user.services";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import DialogModal from "../components/ModalOpen";
-import Loader from "../components/Loader";
-import NotFound from "./NotFoundPage";
-import { user } from "../constants";
+import { user } from "constants/index";
+import { NotFoundPage } from "pages";
+import { Loader, ModalOpen, TasksLayout } from "components";
 
-const User = () => {
+export const UserIdPage = () => {
   const dispatch = useAppDispatch();
 
   const { id } = useParams();
@@ -41,7 +39,7 @@ const User = () => {
   }, [id, dispatch]);
 
   if (notFound) {
-    return <NotFound />;
+    return <NotFoundPage />;
   }
 
   if (load) {
@@ -58,10 +56,10 @@ const User = () => {
         return (
           <ListItem key={user.id}>
             <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src={require("../assets/avatar.png")} />
+              <Avatar alt="Remy Sharp" src={require("assets/avatar.png")} />
             </ListItemAvatar>
             <ListItemText primary={user.name} secondary={user.email} />
-            <DialogModal
+            <ModalOpen
               title="Additional information about the user:"
               open={isClicked}
               users={user}
@@ -86,4 +84,3 @@ const User = () => {
     </Container>
   );
 };
-export default User;

@@ -2,9 +2,9 @@ import { Box, Button, Paper, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { user } from "../../constants";
+import { user } from "constants/index";
 
-function NotFoundBlock() {
+export function NotFound() {
   const [timeLeft, setTimeLeft] = useState(5);
   const [letter, setLetter] = useState("s");
 
@@ -63,4 +63,3 @@ function NotFoundBlock() {
     </Container>
   );
 }
-export default NotFoundBlock;

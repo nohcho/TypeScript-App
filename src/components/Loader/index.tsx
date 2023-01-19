@@ -1,7 +1,7 @@
 import { Box, CircularProgress } from "@mui/material";
 import { Container } from "@mui/system";
 
-function Loader() {
+export function Loader() {
   return (
     <Container maxWidth="sm">
       <Box
@@ -18,4 +18,3 @@ function Loader() {
     </Container>
   );
 }
-export default Loader;

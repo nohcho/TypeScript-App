@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UsersInfo } from "../models/index";
-import { getUserById, getUsers } from "../services/user.services";
+import { UsersInfo } from "models/index";
+import { getUserById, getUsers } from "services/user.services";
 interface usersList {
   list: UsersInfo[];
   userId: UsersInfo[];

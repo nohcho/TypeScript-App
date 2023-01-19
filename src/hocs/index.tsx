@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { Navigate } from "react-router-dom";
-import Users from "../pages/UsersPage";
-import { user } from "../constants";
+import { user } from "constants/index";
+import { UsersPage } from "pages";
 
 const Auth: FC = () => {
   const isAuthenticated = localStorage.getItem(user);
   if (isAuthenticated) {
-    return <Users />;
+    return <UsersPage />;
   }
 
   return <Navigate to={"/signin"} />;

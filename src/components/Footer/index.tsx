@@ -2,7 +2,7 @@ import { AppBar, Link, Toolbar, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import TelegramIcon from "@mui/icons-material/Telegram";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer>
       <AppBar elevation={0} position={"static"} sx={{ mt: 2 }}>
@@ -23,5 +23,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

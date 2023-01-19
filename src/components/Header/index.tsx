@@ -8,7 +8,7 @@ import { setThemeMode } from "../../store/themeSlice";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { logout } from "../../store/authSlice";
 
-const Header = () => {
+export const Header = () => {
   const dispatch = useAppDispatch();
 
   const { themeMode } = useAppSelector((state) => state.theme);
@@ -50,5 +50,3 @@ const Header = () => {
     </Fragment>
   );
 };
-
-export default Header;
