@@ -11,20 +11,20 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.AUTH]: "/",
   [AppRoutes.USERIDPAGE]: "user/:id",
-  [AppRoutes.NOTFOUNDPAGE]: "*",
+  [AppRoutes.NOTFOUNDPAGE]: "*"
 };
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.AUTH]: {
     path: RoutePath.auth,
-    element: <Auth />,
+    element: <Auth />
   },
   [AppRoutes.USERIDPAGE]: {
     path: RoutePath.userIdPage,
-    element: <UserIdPage />,
+    element: <UserIdPage />
   },
   [AppRoutes.NOTFOUNDPAGE]: {
     path: RoutePath.notFoundPage,
-    element: <NotFoundPage />,
-  },
+    element: <NotFoundPage />
+  }
 };

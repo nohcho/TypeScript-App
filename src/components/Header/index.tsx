@@ -18,26 +18,32 @@ export const Header = () => {
     dispatch(setThemeMode(darkOrLight));
   };
 
-  function handleClickLogout() {
+  function handleClickLogout () {
     dispatch(logout());
   }
 
   return (
     <Fragment>
       <AppBar elevation={0} position={"static"}>
-        <Toolbar sx={{ display: "flex", justifyContent: "center" }}>
+        <Toolbar sx={{
+          display: "flex", justifyContent: "center"
+        }}>
           <Typography>TypeScript App</Typography>
-          {themeMode === "dark" ? (
+          {themeMode === "dark"
+            ? (
             <IconButton onClick={handleChangeTheme} size="large">
               <DarkModeIcon />
             </IconButton>
-          ) : (
+              )
+            : (
             <IconButton onClick={handleChangeTheme} color="secondary">
               <LightModeIcon fontSize="large" />
             </IconButton>
-          )}
+              )}
           <IconButton
-            sx={{ position: "absolute", left: 10, color: "white" }}
+            sx={{
+              position: "absolute", left: 10, color: "white"
+            }}
             disableRipple={true}
             edge="end"
             onClick={handleClickLogout}

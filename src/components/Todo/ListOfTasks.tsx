@@ -1,6 +1,5 @@
-import { Fragment, useState, ChangeEvent } from "react";
-import {
-  Box,
+import { Fragment, useState, ChangeEvent, useCallback, useEffect } from "react";
+import { Box,
   Grid,
   IconButton,
   Input,
@@ -9,9 +8,7 @@ import {
   Pagination,
   Paper,
   TextField,
-  Typography,
-} from "@mui/material";
-import { useCallback, useEffect } from "react";
+  Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAppDispatch, useAppSelector } from "store";
 import { deleteTodos, getTodos, patchTodos } from "services/task.services";
@@ -70,8 +67,10 @@ export const ListOfTasks = () => {
   };
 
   const updateHandler = (i: number): void => {
-    if (0 !== text.trim().length) {
-      dispatch(patchTodos({ id: i, title: text }));
+    if (text.trim().length !== 0) {
+      dispatch(patchTodos({
+        id: i, title: text
+      }));
       setInput(0);
       setText("");
     }
@@ -101,7 +100,9 @@ export const ListOfTasks = () => {
         type="search"
         variant="standard"
         placeholder="Search"
-        sx={{ width: "30%", m: "auto", mt: 1 }}
+        sx={{
+          width: "30%", m: "auto", mt: 1
+        }}
         onChange={(event) => handleSearch(event.target.value)}
         helperText="Find a task"
       />
@@ -112,7 +113,7 @@ export const ListOfTasks = () => {
             sx={{
               p: 2,
               display: "grid",
-              gap: 2,
+              gap: 2
             }}
             xs={12}
             item={true}
@@ -122,7 +123,8 @@ export const ListOfTasks = () => {
               <ListItem
                 secondaryAction={
                   <Fragment>
-                    {input !== elem.id ? (
+                    {input !== elem.id
+                      ? (
                       <Fragment>
                         <IconButton
                           onClick={() => showInputHandler(elem.id ?? 0)}
@@ -139,7 +141,8 @@ export const ListOfTasks = () => {
                           <DeleteIcon />
                         </IconButton>
                       </Fragment>
-                    ) : (
+                        )
+                      : (
                       <>
                         {" "}
                         <IconButton
@@ -150,25 +153,29 @@ export const ListOfTasks = () => {
                           <Save fontSize="small" />
                         </IconButton>{" "}
                       </>
-                    )}
+                        )}
                   </Fragment>
                 }
               >
-                {input !== elem.id ? (
+                {input !== elem.id
+                  ? (
                   <ListItemText primary={elem.title} />
-                ) : (
+                    )
+                  : (
                   <Input
                     onChange={inputHandler}
                     defaultValue={elem.title}
                     fullWidth
                   />
-                )}
+                    )}
               </ListItem>
             </Paper>
           </Grid>
         );
       })}
-      <Box sx={{ display: "flex", justifyContent: "center", p: 2 }}>
+      <Box sx={{
+        display: "flex", justifyContent: "center", p: 2
+      }}>
         <Pagination
           size="small"
           page={page}

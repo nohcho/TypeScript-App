@@ -1,30 +1,28 @@
-import {
-  Button,
+import { Button,
   Container,
   Grid,
   TextField,
   Paper,
-  Typography,
-} from "@mui/material";
+  Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { validation } from "helpers/validation";
 import { useAppDispatch } from "store";
 import { login } from "services/auth.services";
 import { MyFormProps } from "models";
 
-export function LogInPage() {
+export function LogInPage () {
   const dispatch = useAppDispatch();
-  function handleSubmit(value: MyFormProps): void {
+  function handleSubmit (value: MyFormProps): void {
     dispatch(login(value));
   }
 
   const formik = useFormik({
     initialValues: {
       password: "",
-      email: "",
+      email: ""
     },
     onSubmit: handleSubmit,
-    validationSchema: validation,
+    validationSchema: validation
   });
 
   return (
@@ -33,7 +31,7 @@ export function LogInPage() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
+        minHeight: "100vh"
       }}
     >
       <form onSubmit={formik.handleSubmit}>
@@ -42,10 +40,12 @@ export function LogInPage() {
             padding: "20px",
             margin: "auto",
             textAlign: "center",
-            width: 700,
+            width: 700
           }}
         >
-          <Typography variant="h4" sx={{ mb: 4 }} color={"primary"}>
+          <Typography variant="h4" sx={{
+            mb: 4
+          }} color={"primary"}>
             Sign in
           </Typography>
           <Grid container spacing={3}>

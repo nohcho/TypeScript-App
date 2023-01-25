@@ -1,5 +1,4 @@
-import {
-  ListItem,
+import { ListItem,
   ListItemAvatar,
   Avatar,
   ListItemText,
@@ -7,8 +6,7 @@ import {
   Grid,
   Box,
   TextField,
-  Badge,
-} from "@mui/material";
+  Badge } from "@mui/material";
 import { Container } from "@mui/system";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -17,7 +15,7 @@ import { getUsers } from "services/user.services";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { Loader } from "components";
 
-export function UsersPage() {
+export function UsersPage () {
   const dispatch = useAppDispatch();
 
   const { list } = useAppSelector((state) => state.list);
@@ -42,15 +40,21 @@ export function UsersPage() {
     return <Loader />;
   }
   return (
-    <Container sx={{ width: 800, minHeight: "100vh" }}>
-      <Box sx={{ justifyContent: "space-between", display: "flex" }}>
+    <Container sx={{
+      width: 800, minHeight: "100vh"
+    }}>
+      <Box sx={{
+        justifyContent: "space-between", display: "flex"
+      }}>
         <TextField
           color="primary"
           label="Search field"
           type="search"
           variant="standard"
           placeholder="Search"
-          sx={{ width: "50%", m: "auto", mt: 1 }}
+          sx={{
+            width: "50%", m: "auto", mt: 1
+          }}
           onChange={(event) => setSearchUser(event.target.value)}
         />
 
@@ -58,10 +62,14 @@ export function UsersPage() {
           badgeContent={filteredUsers.length}
           color="primary"
           variant="standard"
-          sx={{ mt: 4 }}
+          sx={{
+            mt: 4
+          }}
         >
           {"Total:"}
-          <PeopleAltIcon sx={{ ml: 1 }} color="action" />
+          <PeopleAltIcon sx={{
+            ml: 1
+          }} color="action" />
         </Badge>
       </Box>
       {filteredUsers.map((user) => {
@@ -70,7 +78,9 @@ export function UsersPage() {
             {" "}
             <Paper
               elevation={2}
-              sx={{ padding: "20px", margin: "auto", textAlign: "center" }}
+              sx={{
+                padding: "20px", margin: "auto", textAlign: "center"
+              }}
             >
               <ListItem alignItems="flex-start" key={user.id}>
                 <ListItemAvatar>

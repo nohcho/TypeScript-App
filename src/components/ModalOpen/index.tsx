@@ -1,12 +1,10 @@
-import {
-  Button,
+import { Button,
   Dialog as MuiDialog,
   DialogActions,
   DialogContent,
   DialogProps as MuiDialogProps,
   DialogTitle,
-  Typography,
-} from "@mui/material";
+  Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { UsersInfo } from "models/index";
 
@@ -24,7 +22,9 @@ export const ModalOpen = ({ title, open, onClose, users }: DialogProps) => {
       aria-labelledby="simple-dialog-title"
       open={open}
     >
-      <DialogContent sx={{ padding: "10px" }} dividers>
+      <DialogContent sx={{
+        padding: "10px"
+      }} dividers>
         <DialogTitle fontSize={24} fontWeight={800}>
           {title}
         </DialogTitle>

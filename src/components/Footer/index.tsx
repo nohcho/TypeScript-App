@@ -5,13 +5,21 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 export const Footer = () => {
   return (
     <footer>
-      <AppBar elevation={0} position={"static"} sx={{ mt: 2 }}>
-        <Toolbar sx={{ display: "flex", justifyContent: "center" }}>
+      <AppBar elevation={0} position={"static"} sx={{
+        mt: 2
+      }}>
+        <Toolbar sx={{
+          display: "flex", justifyContent: "center"
+        }}>
           <Container
             maxWidth="lg"
-            sx={{ justifyContent: "center", display: "flex" }}
+            sx={{
+              justifyContent: "center", display: "flex"
+            }}
           >
-            <Typography color="white" sx={{ mr: 2 }}>
+            <Typography color="white" sx={{
+              mr: 2
+            }}>
               Contact me:
             </Typography>
             <Link href="https://t.me/tasuhanov" color="inherit">

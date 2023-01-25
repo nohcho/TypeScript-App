@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TodoList } from "models/index";
-import {
-  addTodos,
+import { addTodos,
   deleteTodos,
   getTodos,
-  patchTodos,
-} from "services/task.services";
+  patchTodos } from "services/task.services";
 interface taskList {
   todo: TodoList[];
   loading: boolean;
@@ -13,17 +11,20 @@ interface taskList {
 
 const initialState: taskList = {
   todo: [],
-  loading: false,
+  loading: false
 };
 
 export const todoSlice = createSlice({
   name: "todos",
   initialState,
-  reducers: {},
+  reducers: {
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addTodos.fulfilled, (state, action: PayloadAction<TodoList>) => {
-        state.todo.push({ ...action.payload, id: state.todo.length + 1 });
+        state.todo.push({
+          ...action.payload, id: state.todo.length + 1
+        });
         state.loading = false;
       })
       .addCase(addTodos.pending, (state) => {
@@ -55,7 +56,7 @@ export const todoSlice = createSlice({
           });
         }
       );
-  },
+  }
 });
 
 export default todoSlice.reducer;

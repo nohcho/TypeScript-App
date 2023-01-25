@@ -6,7 +6,6 @@ export const login = createAsyncThunk(
   async (params: MyFormProps, thunkAPI) => {
     try {
       const response = params;
-      console.log(params);
 
       return response;
     } catch (e) {

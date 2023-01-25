@@ -1,18 +1,15 @@
-import {
-  Avatar,
+import { Avatar,
   Button,
   ListItem,
   ListItemAvatar,
   ListItemText,
   Box,
-  IconButton,
-} from "@mui/material";
+  IconButton } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams, Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "store";
 import { getUserById } from "services/user.services";
-import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { user } from "constants/index";
 import { NotFoundPage } from "pages";
@@ -51,7 +48,9 @@ export const UserIdPage = () => {
     return <Navigate to={"/signin"} />;
   }
   return (
-    <Container sx={{ height: "100%", width: 900 }}>
+    <Container sx={{
+      height: "100%", width: 900
+    }}>
       {userId.map((user) => {
         return (
           <ListItem key={user.id}>

@@ -10,7 +10,7 @@ export const addTodos = createAsyncThunk<
     const res = await request.post("/todos", {
       userId,
       title,
-      completed,
+      completed
     });
 
     return res.data;
@@ -25,9 +25,11 @@ export const patchTodos = createAsyncThunk<
 >("todos/patchTodos", async ({ id, title }, thunkAPI) => {
   try {
     const res = await request.patch("/todos/" + id, {
-      title,
+      title
     });
-    return { title, id };
+    return {
+      title, id
+    };
   } catch (e) {
     return thunkAPI.rejectWithValue(e);
   }

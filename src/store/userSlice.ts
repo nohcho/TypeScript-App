@@ -14,7 +14,7 @@ const initialState: usersList = {
   userId: [],
   loading: false,
   notFound: false,
-  fakeAuth: false,
+  fakeAuth: false
 };
 
 export const usersSlice = createSlice({
@@ -24,7 +24,7 @@ export const usersSlice = createSlice({
     setUsers: (state, action: PayloadAction<UsersInfo[]>) => {
       state.list = action.payload;
       state.loading = false;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -54,7 +54,7 @@ export const usersSlice = createSlice({
         state.loading = false;
         state.notFound = true;
       });
-  },
+  }
 });
 
 export default usersSlice.reducer;

@@ -10,8 +10,8 @@ export const store = configureStore({
     list: usersReducer,
     todo: tasksReducer,
     theme: themeReducer,
-    login: loginReducer,
-  },
+    login: loginReducer
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;

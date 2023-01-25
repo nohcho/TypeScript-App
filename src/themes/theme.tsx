@@ -16,12 +16,12 @@ const MuiThemeProvider: React.FC<Props> = ({ children }) => {
     palette: {
       mode: isLight ? "light" : "dark",
       secondary: {
-        main: "#fbcc57",
-      },
+        main: "#fbcc57"
+      }
     },
     typography: {
-      fontFamily: "Montserrat",
-    },
+      fontFamily: "Montserrat"
+    }
   });
 
   return (

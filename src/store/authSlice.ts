@@ -5,7 +5,7 @@ import { user } from "constants/index";
 
 const initialState: Auth = {
   user: "",
-  isAuthenticated: false,
+  isAuthenticated: false
 };
 
 const authSlice = createSlice({
@@ -16,7 +16,7 @@ const authSlice = createSlice({
       state.user = "";
       localStorage.clear();
       window.location.href = "/signin";
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -32,7 +32,7 @@ const authSlice = createSlice({
           state.user = action.payload;
         }
       );
-  },
+  }
 });
 
 export const { logout } = authSlice.actions;

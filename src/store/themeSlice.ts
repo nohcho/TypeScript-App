@@ -5,7 +5,7 @@ export interface SettingsState {
 }
 
 const initialState: SettingsState = {
-  themeMode: (localStorage.getItem("theme") as string) || "light",
+  themeMode: (localStorage.getItem("theme") as string) || "light"
 };
 
 const settingsSlice = createSlice({
@@ -15,8 +15,8 @@ const settingsSlice = createSlice({
     setThemeMode: (state, action: PayloadAction<string>) => {
       state.themeMode = action.payload;
       localStorage.setItem("theme", state.themeMode);
-    },
-  },
+    }
+  }
 });
 
 export const { setThemeMode } = settingsSlice.actions;

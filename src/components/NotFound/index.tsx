@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { user } from "constants/index";
 
-export function NotFound() {
+export function NotFound () {
   const [timeLeft, setTimeLeft] = useState(5);
   const [letter, setLetter] = useState("s");
 
@@ -32,7 +32,7 @@ export function NotFound() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          minHeight: "100vh",
+          minHeight: "100vh"
         }}
       >
         {" "}
@@ -42,13 +42,17 @@ export function NotFound() {
             padding: "20px",
             margin: "auto",
             textAlign: "center",
-            width: 700,
+            width: 700
           }}
         >
-          <Typography sx={{ p: 5 }} variant="h4">
+          <Typography sx={{
+            p: 5
+          }} variant="h4">
             This page was not found 😞
           </Typography>
-          <Typography sx={{ p: 5 }} fontSize={22}>
+          <Typography sx={{
+            p: 5
+          }} fontSize={22}>
             {`You will be redirected to the home page in ${timeLeft} second${letter}`}{" "}
           </Typography>
           <Link to={"/"} className="text-link">

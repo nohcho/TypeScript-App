@@ -28,12 +28,12 @@ export const Form = () => {
 
   const submitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    if (0 !== text.trim().length) {
+    if (text.trim().length !== 0) {
       dispatch(
         addTodos({
           userId: +currentUserId,
           title: text,
-          completed: false,
+          completed: false
         })
       );
       setText("");
@@ -53,21 +53,29 @@ export const Form = () => {
   };
   return (
     <form onSubmit={submitHandler}>
-      <Paper style={{ margin: 16, padding: 16 }}>
+      <Paper style={{
+        margin: 16, padding: 16
+      }}>
         <Grid item xs={12}>
-          <Grid xs={10} md={11} item style={{ paddingRight: 16 }}>
+          <Grid xs={10} md={11} item style={{
+            paddingRight: 16
+          }}>
             <TextField
               fullWidth
               value={text}
               onChange={inputHandler}
-              style={{ width: "92%" }}
+              style={{
+                width: "92%"
+              }}
               onBlur={onBlurHandler}
               error={isEmpty}
               helperText={isEmpty ? "Enter text" : ""}
             />
             <Grid xs={2} md={1} item>
               <LoadingButton
-                style={{ width: "8%" }}
+                style={{
+                  width: "8%"
+                }}
                 type="submit"
                 variant="contained"
                 disabled={disabledBtn}

@@ -1,7 +1,7 @@
 import { Box, CircularProgress } from "@mui/material";
 import { Container } from "@mui/system";
 
-export function Loader() {
+export function Loader () {
   return (
     <Container maxWidth="sm">
       <Box
@@ -9,7 +9,7 @@ export function Loader() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          minHeight: "100vh",
+          minHeight: "100vh"
         }}
       >
         {" "}
