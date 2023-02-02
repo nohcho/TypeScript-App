@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "store";
 import { BrowserRouter } from "react-router-dom";
 import MuiThemeProvider from "themes/theme";
+import { ErrorBoundary } from "pages";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,11 +14,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
-        <MuiThemeProvider>
-          <App />
-        </MuiThemeProvider>
-      </Provider>
+        <ErrorBoundary>
+            <Provider store={store}>
+                <MuiThemeProvider>
+                    <App />
+                </MuiThemeProvider>
+            </Provider>
+        </ErrorBoundary>
     </BrowserRouter>
   </React.StrictMode>
 );
