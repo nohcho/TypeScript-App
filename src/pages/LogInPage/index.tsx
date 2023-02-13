@@ -91,7 +91,7 @@ export function LogInPage () {
               item
               lg={12}
             >
-              <Button type="submit" variant="contained" color="primary">
+              <Button type="submit" variant="contained" color="primary" data-testid="submit-button">
                 Login
               </Button>
             </Grid>

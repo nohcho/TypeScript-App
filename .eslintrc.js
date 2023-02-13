@@ -35,5 +35,12 @@ module.exports = {
     curly: "error",
     "no-unused-vars": "warn",
     "no-extra-semi": "error"
+  },
+  overrides: [{
+    files: ["**/src/**/*.test.{ts,tsx}"],
+    env: {
+      jest: true
+    }
   }
+  ]
 };
