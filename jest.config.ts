@@ -32,7 +32,11 @@ export default {
   ],
   testMatch: [
     "<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"
-  ]
+  ],
+  moduleNameMapper: {
+    "^axios$": require.resolve("axios")
+  },
+  setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"]
   // rootDir: "../../"
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
