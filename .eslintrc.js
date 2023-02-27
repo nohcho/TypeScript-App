@@ -15,11 +15,16 @@ module.exports = {
   env: {
     browser: true
   },
-  plugins: ["@typescript-eslint"],
+  plugins: [
+    "@typescript-eslint",
+    "react-hooks"
+  ],
   rules: {
     "prefer-const": "error",
     "no-var": "error",
     "no-console": "error",
+    "react-hooks/rules-of-hooks": "error", // Проверяем правила хуков
+    "react-hooks/exhaustive-deps": "error",
     "object-curly-newline": ["error", {
       ObjectExpression: "always",
       ObjectPattern: {

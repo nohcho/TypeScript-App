@@ -8,17 +8,15 @@ import { Button,
 import { Box } from "@mui/system";
 import { UsersInfo } from "models/index";
 
-type CloseReason = "backdropClick" | "escapeKeyDown" | "closeButtonClick";
-
 interface DialogProps extends MuiDialogProps {
   users: UsersInfo;
-  onClose: (reason: CloseReason) => void;
+  onClose: () => void;
 }
 
 export const ModalOpen = ({ title, open, onClose, users }: DialogProps) => {
   return (
     <MuiDialog
-      onClose={(_, reason) => onClose(reason)}
+      onClose={onClose}
       aria-labelledby="simple-dialog-title"
       open={open}
     >
@@ -65,7 +63,7 @@ export const ModalOpen = ({ title, open, onClose, users }: DialogProps) => {
         </Typography>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => onClose("closeButtonClick")}> Close </Button>
+        <Button onClick={onClose}> Close </Button>
       </DialogActions>
     </MuiDialog>
   );

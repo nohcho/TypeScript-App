@@ -27,7 +27,7 @@ export const UserIdPage = () => {
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  const handleClose = (value: string) => {
+  const handleClose = () => {
     setIsClicked(false);
   };
 
