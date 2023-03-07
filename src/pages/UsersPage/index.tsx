@@ -8,7 +8,7 @@ import { ListItem,
   TextField,
   Badge } from "@mui/material";
 import { Container } from "@mui/system";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "store";
 import { getUsers } from "services/user.services";
@@ -23,10 +23,12 @@ export function UsersPage () {
 
   const [searchUser, setSearchUser] = useState<string>("");
 
-  const filteredUsers = list.filter((item) => {
-    const userName = `${item.name.toLowerCase()}`;
-    return userName.includes(searchUser.toLowerCase());
-  });
+  const filteredUsers = useMemo(() => {
+    return list.filter((item) => {
+      const userName = `${item.name.toLowerCase()}`;
+      return userName.includes(searchUser.toLowerCase());
+    });
+  }, [list, searchUser]);
 
   const getUsersFunction = useCallback(async () => {
     await dispatch(getUsers());
