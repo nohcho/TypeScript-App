@@ -1,4 +1,4 @@
-import { Fragment, useState, ChangeEvent, useCallback, useEffect } from "react";
+import { Fragment, useState, ChangeEvent, useCallback, useEffect, useMemo } from "react";
 import { Box,
   Grid,
   IconButton,
@@ -35,14 +35,16 @@ export const ListOfTasks = () => {
     .filter((elem) => elem.userId?.toString() === getUserId.toString())
     .reverse();
 
-  const searchFilteredTodos = findUserTask.filter((item) => {
-    const userName = `${item.title.toLowerCase()}`;
-    return userName.includes(searchTodo.toLowerCase());
-  });
+  const searchFilteredTodos = useMemo(() => {
+    return findUserTask.filter((item) => {
+      const userName = `${item.title.toLowerCase()}`;
+      return userName.includes(searchTodo.toLowerCase());
+    });
+  }, [findUserTask, searchTodo]);
 
-  const todoList = searchFilteredTodos.filter(
-    (item, index) => index >= minIndex && index < maxIndex
-  );
+  const todoList = useMemo(() => {
+    return searchFilteredTodos.filter((item, index) => index >= minIndex && index < maxIndex);
+  }, [searchFilteredTodos, minIndex, maxIndex]);
 
   const isPlural = todoList.length === 1 || todoList.length === 0 ? "" : "s";
   const isPluralTotal =
