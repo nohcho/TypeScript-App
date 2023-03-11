@@ -30,6 +30,7 @@ export const UserIdPage = () => {
 
   useEffect((): void => {
     dispatch(getUserById(+id!));
+    window.scrollTo(0, 0);
   }, [id, dispatch]);
 
   if (notFound) {

@@ -36,6 +36,7 @@ export function UsersPage () {
 
   useEffect((): void => {
     getUsersFunction();
+    window.scrollTo(0, 0);
   }, [getUsersFunction]);
 
   if (loading) {
