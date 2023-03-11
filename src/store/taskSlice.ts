@@ -4,7 +4,8 @@ import { addTodos,
   deleteTodos,
   getTodos,
   patchTodos } from "services/task.services";
-interface taskList {
+
+export interface taskList {
   todo: TodoList[];
   loading: boolean;
 }

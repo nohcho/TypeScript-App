@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import StyledEngineProvider from "@mui/material/StyledEngineProvider";
-import { useAppSelector } from "store";
+import { useAppSelector } from "store/store";
 
 interface Props {
   children: React.ReactNode;

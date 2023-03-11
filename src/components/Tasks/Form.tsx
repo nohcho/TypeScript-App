@@ -2,7 +2,7 @@ import { Grid, Paper, TextField } from "@mui/material";
 import { useState, ChangeEvent, FormEvent } from "react";
 import { addTodos } from "services/task.services";
 import { useParams } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "store";
+import { useAppSelector, useAppDispatch } from "store/store";
 import { LoadingButton } from "@mui/lab";
 
 export const Form = () => {
@@ -14,7 +14,7 @@ export const Form = () => {
   const [isEmpty, setIsEmpty] = useState<boolean>(false);
   const [disabledBtn, setDisabledBtn] = useState<boolean>(false);
 
-  const load = useAppSelector((state) => state.todo.loading);
+  const load = useAppSelector((state) => state.todos.loading);
 
   const currentUserId = userIdFromUrl ?? 0;
 

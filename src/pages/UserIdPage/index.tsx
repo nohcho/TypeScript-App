@@ -8,22 +8,19 @@ import { Avatar,
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Navigate, useParams, Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "store";
+import { useAppDispatch, useAppSelector } from "store/store";
 import { getUserById } from "services/user.services";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { user } from "constants/index";
 import { NotFoundPage } from "pages";
 import { Loader, ModalOpen, TasksLayout } from "components";
+import { UsersInfo } from "models";
 
 export const UserIdPage = () => {
   const dispatch = useAppDispatch();
 
   const { id } = useParams();
-  const { userId } = useAppSelector((state) => state.list);
-
-  const load = useAppSelector((state) => state.list.loading);
-
-  const notFound = useAppSelector((state) => state.list.notFound);
+  const { userId, loading, notFound } = useAppSelector((state) => state.users);
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
@@ -39,7 +36,7 @@ export const UserIdPage = () => {
     return <NotFoundPage />;
   }
 
-  if (load) {
+  if (loading) {
     return <Loader />;
   }
 
@@ -51,7 +48,7 @@ export const UserIdPage = () => {
     <Container sx={{
       height: "100%", width: 900
     }}>
-      {userId.map((user) => {
+      {userId.map((user: UsersInfo) => {
         return (
           <ListItem key={user.id}>
             <ListItemAvatar>

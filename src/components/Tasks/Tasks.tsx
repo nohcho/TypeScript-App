@@ -1,5 +1,6 @@
-import { Fragment, useState, ChangeEvent, useCallback, useEffect, useMemo } from "react";
-import { Box,
+import { Fragment, useState, ChangeEvent, useCallback, useEffect, useMemo, useRef } from "react";
+import { Box, FormControl,
+  FormHelperText,
   Grid,
   IconButton,
   Input,
@@ -10,20 +11,22 @@ import { Box,
   TextField,
   Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useAppDispatch, useAppSelector } from "store";
+import { useAppDispatch, useAppSelector } from "store/store";
 import { deleteTodos, getTodos, patchTodos } from "services/task.services";
 import { Build, Save } from "@mui/icons-material";
+import { TodoList } from "@/models";
 
-export const ListOfTasks = () => {
+export const Tasks = () => {
   const dispatch = useAppDispatch();
 
   const [input, setInput] = useState<number>();
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [searchTodo, setSearchTodo] = useState<string>("");
+  const [error, setError] = useState(false);
 
-  const { todo } = useAppSelector((state) => state.todo);
-  const { userId } = useAppSelector((state) => state.list);
+  const todo = useAppSelector((state) => state.todos.todo);
+  const userId = useAppSelector((state) => state.users.userId);
 
   const getUserId = userId.map((elem) => elem.id);
 
@@ -32,18 +35,18 @@ export const ListOfTasks = () => {
   const maxIndex = page * limit;
 
   const findUserTask = todo
-    .filter((elem) => elem.userId?.toString() === getUserId.toString())
+    .filter((elem:TodoList) => elem.userId?.toString() === getUserId.toString())
     .reverse();
 
   const searchFilteredTodos = useMemo(() => {
-    return findUserTask.filter((item) => {
+    return findUserTask.filter((item:TodoList) => {
       const userName = `${item.title.toLowerCase()}`;
       return userName.includes(searchTodo.toLowerCase());
     });
   }, [findUserTask, searchTodo]);
 
   const todoList = useMemo(() => {
-    return searchFilteredTodos.filter((item, index) => index >= minIndex && index < maxIndex);
+    return searchFilteredTodos.filter((item:TodoList, index:number) => index >= minIndex && index < maxIndex);
   }, [searchFilteredTodos, minIndex, maxIndex]);
 
   const isPlural = todoList.length === 1 || todoList.length === 0 ? "" : "s";
@@ -60,23 +63,28 @@ export const ListOfTasks = () => {
   };
 
   const showInputHandler = (i: number): void => {
+    setError(false);
     setInput(i);
   };
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
     setText(e.target.value);
+    if (!e.target.value.trim()) {
+      setError(true);
+    } else {
+      setError(false);
+    }
   };
 
   const updateHandler = (i: number): void => {
-    if (text.trim().length !== 0) {
+    if (!error) {
       dispatch(patchTodos({
         id: i, title: text
       }));
       setInput(0);
       setText("");
     }
-    setInput(0);
   };
 
   const handleRemoveTodo = (i: number): void => {
@@ -90,6 +98,7 @@ export const ListOfTasks = () => {
   useEffect((): void => {
     getTodosFunction();
   }, [getTodosFunction, dispatch]);
+
   return (
     <Fragment>
       <Typography
@@ -109,7 +118,7 @@ export const ListOfTasks = () => {
         helperText="Find a task"
       />
 
-      {todoList.map((elem) => {
+      {todoList.map((elem: TodoList) => {
         return (
           <Grid
             sx={{
@@ -164,11 +173,15 @@ export const ListOfTasks = () => {
                   <ListItemText primary={elem.title} />
                     )
                   : (
-                  <Input
-                    onChange={inputHandler}
-                    defaultValue={elem.title}
-                    fullWidth
-                  />
+                      <FormControl error={error} fullWidth>
+                        <Input
+                            onChange={inputHandler}
+                            defaultValue={elem.title}
+                            fullWidth
+                            error={error}
+                        />
+                        {error && <FormHelperText>Value cannot be empty</FormHelperText>}
+                      </FormControl>
                     )}
               </ListItem>
             </Paper>

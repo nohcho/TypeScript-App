@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import { useAppDispatch } from "store";
+import { useAppDispatch } from "@/store/store";
 import { LogInPage } from ".";
 import { login } from "services/auth.services";
 import { waitFor } from "@testing-library/dom";

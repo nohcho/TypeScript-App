@@ -1,5 +1,5 @@
 import { Paper } from "@mui/material";
-import { Form, ListOfTasks } from "components";
+import { Form, Tasks } from "components";
 
 export const TasksLayout = () => {
   return (
@@ -10,7 +10,7 @@ export const TasksLayout = () => {
     >
       <Form />
       <Paper>
-        <ListOfTasks />
+        <Tasks />
       </Paper>
     </Paper>
   );

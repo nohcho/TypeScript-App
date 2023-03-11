@@ -10,21 +10,21 @@ import { ListItem,
 import { Container } from "@mui/system";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "store";
+import { useAppDispatch, useAppSelector } from "store/store";
 import { getUsers } from "services/user.services";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { Loader } from "components";
+import { UsersInfo } from "@/models";
 
 export function UsersPage () {
   const dispatch = useAppDispatch();
 
-  const { list } = useAppSelector((state) => state.list);
-  const load = useAppSelector((state) => state.list.loading);
+  const { list, loading } = useAppSelector((state) => state.users);
 
   const [searchUser, setSearchUser] = useState<string>("");
 
   const filteredUsers = useMemo(() => {
-    return list.filter((item) => {
+    return list.filter((item: UsersInfo) => {
       const userName = `${item.name.toLowerCase()}`;
       return userName.includes(searchUser.toLowerCase());
     });
@@ -38,7 +38,7 @@ export function UsersPage () {
     getUsersFunction();
   }, [getUsersFunction]);
 
-  if (load) {
+  if (loading) {
     return <Loader />;
   }
   return (
@@ -74,7 +74,7 @@ export function UsersPage () {
           }} color="action" />
         </Badge>
       </Box>
-      {filteredUsers.map((user) => {
+      {filteredUsers.map((user: UsersInfo) => {
         return (
           <Grid xs={12} key={user.id} item={true}>
             {" "}
