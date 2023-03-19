@@ -3,11 +3,10 @@ import request from "helpers";
 import { TodoList } from "models/index";
 
 export const addTodos = createAsyncThunk<
-  TodoList,
-  { userId: number; title: string; completed: boolean }
+  TodoList, TodoList
 >("todos/addTodos", async ({ userId, title, completed }, thunkAPI) => {
   try {
-    const res = await request.post("/todos", {
+    const res = await request.post<TodoList>("/todos", {
       userId,
       title,
       completed

@@ -1,12 +1,12 @@
 
-interface adress {
+interface Adress {
   street: string;
   suite: string;
   city: string;
   zipcode: string;
 }
 
-interface company {
+interface Company {
   name: string;
   catchPhrase: string;
   bs: string;
@@ -16,10 +16,10 @@ export interface UsersInfo {
   name: string;
   username: string;
   email: string;
-  address: adress;
+  address: Adress;
   phone: string;
   website: string;
-  company: company;
+  company: Company;
 }
 
 export interface TodoList {

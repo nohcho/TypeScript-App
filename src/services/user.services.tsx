@@ -6,7 +6,7 @@ export const getUsers = createAsyncThunk<UsersInfo[]>(
   "users/getUsers",
   async (_, thunkAPI) => {
     try {
-      const data = await request.get("/users");
+      const data = await request.get<UsersInfo[]>("/users");
 
       return data.data;
     } catch (e) {
@@ -19,7 +19,7 @@ export const getUserById = createAsyncThunk<UsersInfo, Number>(
   "users/getUserById",
   async (id, thunkAPI) => {
     try {
-      const data = await request.get("/users/" + id);
+      const data = await request.get<UsersInfo>("/users/" + id);
 
       return data.data;
     } catch (e) {
