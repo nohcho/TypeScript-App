@@ -1,6 +1,6 @@
 import { IconButton, Toolbar, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 import { useAppDispatch, useAppSelector } from "store/store";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -8,7 +8,7 @@ import { setThemeMode } from "../../store/themeSlice";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { logout } from "../../store/authSlice";
 
-export const Header = () => {
+export const Header = memo(() => {
   const dispatch = useAppDispatch();
 
   const { themeMode } = useAppSelector((state) => state.theme);
@@ -55,4 +55,4 @@ export const Header = () => {
       {/* <Toolbar /> */}
     </Fragment>
   );
-};
+});

@@ -28,6 +28,7 @@
   },
   "scripts": {
     "lint": "eslint --ext .ts,.tsx --parser @typescript-eslint/parser --plugin @typescript-eslint .",
+    "lint:fix": "npm run lint -- --fix",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",

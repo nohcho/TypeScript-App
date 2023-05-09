@@ -1,23 +1,27 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { user } from "constants/index";
 
 export function NotFound () {
   const [timeLeft, setTimeLeft] = useState(5);
   const [letter, setLetter] = useState("s");
+  const timer = useRef<ReturnType<typeof setTimeout>>();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTimeout(() => {
+    timer.current = setTimeout(() => {
       if (timeLeft === 2) setLetter("");
-      if (timeLeft >= 1) setTimeLeft(timeLeft - 1);
+      if (timeLeft >= 1) setTimeLeft((t) => t - 1);
     }, 1000);
     if (timeLeft === 0) {
       navigate("/");
     }
+    return () => {
+      clearInterval(timer.current);
+    };
   }, [timeLeft, navigate]);
 
   const isAuthenticated = localStorage.getItem(user);
@@ -57,9 +61,7 @@ export function NotFound () {
           </Typography>
           <Link to={"/"} className="text-link">
             <Button variant="outlined" size="small">
-              <Link to="/" className="text-link">
                 Back home
-              </Link>
             </Button>
           </Link>
         </Paper>

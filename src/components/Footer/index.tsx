@@ -1,8 +1,9 @@
 import { AppBar, Link, Toolbar, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import { memo } from "react";
 
-export const Footer = () => {
+export const Footer = memo(() => {
   return (
     <footer>
       <AppBar elevation={0} position={"static"} sx={{
@@ -30,4 +31,4 @@ export const Footer = () => {
       </AppBar>
     </footer>
   );
-};
+});

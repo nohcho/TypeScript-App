@@ -8,7 +8,7 @@ import { ListItem,
   TextField,
   Badge } from "@mui/material";
 import { Container } from "@mui/system";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "store/store";
 import { getUsers } from "services/user.services";
@@ -16,7 +16,7 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { Loader } from "components";
 import { UsersInfo } from "@/models";
 
-export function UsersPage () {
+export const UsersPage = memo(() => {
   const dispatch = useAppDispatch();
 
   const { list, loading } = useAppSelector((state) => state.users);
@@ -99,4 +99,4 @@ export function UsersPage () {
       })}
     </Container>
   );
-}
+});

@@ -29,23 +29,17 @@ export const usersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(
-        getUsers.fulfilled,
-        (state, action: PayloadAction<UsersInfo[]>) => {
-          state.notFound = false;
-          state.loading = false;
-          state.list = action.payload;
-        }
-      )
+      .addCase(getUsers.fulfilled, (state, action: PayloadAction<UsersInfo[]>) => {
+        state.notFound = false;
+        state.loading = false;
+        state.list = action.payload;
+      })
       .addCase(getUsers.pending, handleLoadingState)
-      .addCase(
-        getUserById.fulfilled,
-        (state, action: PayloadAction<UsersInfo>) => {
-          state.userId = [];
-          state.userId.push(action.payload);
-          state.loading = false;
-        }
-      )
+      .addCase(getUserById.fulfilled, (state, action: PayloadAction<UsersInfo>) => {
+        state.userId = [];
+        state.userId.push(action.payload);
+        state.loading = false;
+      })
       .addCase(getUserById.pending, handleLoadingState)
       .addCase(getUserById.rejected, (state) => {
         state.loading = false;

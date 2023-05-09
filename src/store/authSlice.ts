@@ -23,15 +23,12 @@ const authSlice = createSlice({
       .addCase(login.pending, (state) => {
         state.isAuthenticated = true;
       })
-      .addCase(
-        login.fulfilled.toString(),
-        (state, action: PayloadAction<string>) => {
-          state.isAuthenticated = false;
-          localStorage.setItem(user, action.payload);
-          window.location.href = "/";
-          state.user = action.payload;
-        }
-      );
+      .addCase(login.fulfilled.toString(), (state, action: PayloadAction<string>) => {
+        state.isAuthenticated = false;
+        localStorage.setItem(user, action.payload);
+        window.location.href = "/";
+        state.user = action.payload;
+      });
   }
 });
 

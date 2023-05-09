@@ -7,10 +7,10 @@ import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import { Auth } from "models";
 
 export interface StateSchema {
-  users: usersList,
-  todos: taskList,
-  theme: SettingsState,
-  login: Auth
+  users: usersList;
+  todos: taskList;
+  theme: SettingsState;
+  login: Auth;
 }
 
 const rootReducer: ReducersMapObject<StateSchema> = {

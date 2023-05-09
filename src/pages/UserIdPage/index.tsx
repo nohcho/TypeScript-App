@@ -6,7 +6,7 @@ import { Avatar,
   Box,
   IconButton } from "@mui/material";
 import { Container } from "@mui/system";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { Navigate, useParams, Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "store/store";
 import { getUserById } from "services/user.services";
@@ -16,7 +16,7 @@ import { NotFoundPage } from "pages";
 import { Loader, ModalOpen, TasksLayout } from "components";
 import { UsersInfo } from "models";
 
-export const UserIdPage = () => {
+export const UserIdPage = memo(() => {
   const dispatch = useAppDispatch();
 
   const { id } = useParams();
@@ -80,4 +80,4 @@ export const UserIdPage = () => {
       <TasksLayout />
     </Container>
   );
-};
+});

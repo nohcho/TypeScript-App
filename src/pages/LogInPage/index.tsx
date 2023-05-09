@@ -9,8 +9,9 @@ import { validation } from "helpers/validation";
 import { useAppDispatch } from "store/store";
 import { login } from "services/auth.services";
 import { MyFormProps } from "models";
+import { memo } from "react";
 
-export function LogInPage () {
+export const LogInPage = memo(() => {
   const dispatch = useAppDispatch();
   function handleSubmit (value: MyFormProps): void {
     dispatch(login(value));
@@ -100,4 +101,4 @@ export function LogInPage () {
       </form>
     </Container>
   );
-}
+});

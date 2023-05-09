@@ -7,13 +7,14 @@ import { Button,
   Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { UsersInfo } from "models/index";
+import { memo } from "react";
 
 interface DialogProps extends MuiDialogProps {
   users: UsersInfo;
   onClose: () => void;
 }
 
-export const ModalOpen = ({ title, open, onClose, users }: DialogProps) => {
+export const ModalOpen = memo(({ title, open, onClose, users }: DialogProps) => {
   return (
     <MuiDialog
       onClose={onClose}
@@ -27,38 +28,28 @@ export const ModalOpen = ({ title, open, onClose, users }: DialogProps) => {
           {title}
         </DialogTitle>
         <Typography gutterBottom fontSize={20}>
-          <Box component="h4" display="inline">
             {" "}
             Address:{" "}
-          </Box>
           {` ${users.address.city}, ${users.address.suite}, ${users.address.street}`}
         </Typography>
         <Typography gutterBottom fontSize={20}>
-          <Box component="h4" display="inline">
             {" "}
             Zip code:{" "}
-          </Box>
           {`${users.address.zipcode}`}
         </Typography>
         <Typography gutterBottom fontSize={20}>
           {" "}
-          <Box component="h4" display="inline">
             Phone number:{" "}
-          </Box>
           {`${users.phone}`}
         </Typography>
         <Typography gutterBottom fontSize={20}>
           {" "}
-          <Box component="h4" display="inline">
             Website:{" "}
-          </Box>
           {` ${users.website}`}
         </Typography>
         <Typography gutterBottom fontSize={20}>
           {" "}
-          <Box component="h4" display="inline">
             Company:{" "}
-          </Box>
           {` ${users.company.name}`}
         </Typography>
       </DialogContent>
@@ -67,4 +58,4 @@ export const ModalOpen = ({ title, open, onClose, users }: DialogProps) => {
       </DialogActions>
     </MuiDialog>
   );
-};
+});

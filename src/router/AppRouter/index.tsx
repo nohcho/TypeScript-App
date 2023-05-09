@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import { Route, Routes } from "react-router-dom";
 import { routeConfig } from "router/RouteConfig";
 import { Layout } from "components";
 import { LogInPage } from "pages";
 
-const AppRouter = () => {
+const AppRouter = memo(() => {
   return (
     <div>
       <Routes>
@@ -17,6 +17,6 @@ const AppRouter = () => {
       </Routes>
     </div>
   );
-};
+});
 
 export default AppRouter;

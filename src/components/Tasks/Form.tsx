@@ -1,11 +1,11 @@
 import { Grid, Paper, TextField } from "@mui/material";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, memo } from "react";
 import { addTodos } from "services/task.services";
 import { useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "store/store";
 import { LoadingButton } from "@mui/lab";
 
-export const Form = () => {
+export const Form = memo(() => {
   const dispatch = useAppDispatch();
 
   const { id: userIdFromUrl } = useParams();
@@ -89,4 +89,4 @@ export const Form = () => {
       </Paper>
     </form>
   );
-};
+});

@@ -1,4 +1,4 @@
-import { Fragment, useState, ChangeEvent, useCallback, useEffect, useMemo, useRef } from "react";
+import { Fragment, useState, ChangeEvent, useCallback, useEffect, useMemo, useRef, memo } from "react";
 import { Box, FormControl,
   FormHelperText,
   Grid,
@@ -16,7 +16,7 @@ import { deleteTodos, getTodos, patchTodos } from "services/task.services";
 import { Build, Save } from "@mui/icons-material";
 import { TodoList } from "@/models";
 
-export const Tasks = () => {
+export const Tasks = memo(() => {
   const dispatch = useAppDispatch();
 
   const [input, setInput] = useState<number>();
@@ -67,7 +67,7 @@ export const Tasks = () => {
     setInput(i);
   };
 
-  const inputHandler = (e: ChangeEvent<HTMLInputElement>): void => {
+  const inputHandler = useCallback((e: ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
     setText(e.target.value);
     if (!e.target.value.trim()) {
@@ -75,9 +75,9 @@ export const Tasks = () => {
     } else {
       setError(false);
     }
-  };
+  }, []);
 
-  const updateHandler = (i: number): void => {
+  const updateHandler = useCallback((i: number): void => {
     if (!error) {
       dispatch(patchTodos({
         id: i, title: text
@@ -85,7 +85,7 @@ export const Tasks = () => {
       setInput(0);
       setText("");
     }
-  };
+  }, [dispatch, error, text]);
 
   const handleRemoveTodo = (i: number): void => {
     dispatch(deleteTodos(i));
@@ -201,4 +201,4 @@ export const Tasks = () => {
       </Box>
     </Fragment>
   );
-};
+});

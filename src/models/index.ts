@@ -1,4 +1,3 @@
-
 interface Adress {
   street: string;
   suite: string;
