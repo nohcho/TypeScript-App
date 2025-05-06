@@ -43,60 +43,72 @@ export const UsersPage = memo(() => {
     return <Loader />;
   }
   return (
-    <Container sx={{
-      width: 800, minHeight: "100vh"
-    }}>
-      <Box sx={{
-        justifyContent: "space-between", display: "flex"
+      <Container sx={{
+        width: 800, minHeight: "100vh", py: 4
       }}>
-        <TextField
-          color="primary"
-          label="Search field"
-          type="search"
-          variant="standard"
-          placeholder="Search"
-          sx={{
-            width: "50%", m: "auto", mt: 1
-          }}
-          onChange={(event) => setSearchUser(event.target.value)}
-        />
-
-        <Badge
-          badgeContent={filteredUsers.length}
-          color="primary"
-          variant="standard"
-          sx={{
-            mt: 4
-          }}
-        >
-          {"Total:"}
-          <PeopleAltIcon sx={{
-            ml: 1
-          }} color="action" />
-        </Badge>
-      </Box>
-      {filteredUsers.map((user: UsersInfo) => {
-        return (
-          <Grid xs={12} key={user.id} item={true}>
-            {" "}
-            <Paper
-              elevation={2}
+        <Box sx={{
+          justifyContent: "space-between", display: "flex", mb: 4
+        }}>
+          <TextField
+              color="primary"
+              label="Search field"
+              type="search"
+              variant="standard"
+              placeholder="Search"
               sx={{
-                padding: "20px", margin: "auto", textAlign: "center"
+                width: "50%"
               }}
-            >
-              <ListItem alignItems="flex-start" key={user.id}>
-                <ListItemAvatar>
-                  <Avatar alt="Remy Sharp" src={require("assets/avatar.png")} />
-                </ListItemAvatar>
-                <Link to={`/user/${user.id}`} className="text-link">
-                  <ListItemText primary={user.name} secondary={user.email} />
-                </Link>
-              </ListItem>
-            </Paper>
-          </Grid>
-        );
-      })}
-    </Container>
+              onChange={(event) => setSearchUser(event.target.value)}
+          />
+
+          <Badge
+              badgeContent={filteredUsers.length}
+              color="primary"
+              variant="standard"
+              sx={{
+                alignSelf: "flex-end"
+              }}
+          >
+            {"Total:"}
+            <PeopleAltIcon sx={{
+              ml: 1
+            }} color="action" />
+          </Badge>
+        </Box>
+
+        <Box display="flex" flexDirection="column" gap={2}>
+              {filteredUsers.map((user: UsersInfo) => (
+                  <Link
+                      key={user.id}
+                      to={`/user/${user.id}`}
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                        display: "block"
+                      }}
+                  >
+                      <Paper
+                          elevation={2}
+                          sx={{
+                            p: 2,
+                            cursor: "pointer",
+                            transition: "0.2s",
+                            "&:hover": {
+                              boxShadow: 6,
+                              transform: "scale(1.01)"
+                            }
+                          }}
+                      >
+                          <ListItem alignItems="flex-start">
+                              <ListItemAvatar>
+                                  <Avatar alt="Remy Sharp" src={require("assets/avatar.png")} />
+                              </ListItemAvatar>
+                              <ListItemText primary={user.name} secondary={user.email} />
+                          </ListItem>
+                      </Paper>
+                  </Link>
+              ))}
+          </Box>
+      </Container>
   );
 });

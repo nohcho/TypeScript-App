@@ -56,8 +56,8 @@ export const Form = memo(() => {
       <Paper style={{
         margin: 16, padding: 16
       }}>
-        <Grid item xs={12}>
-          <Grid xs={10} md={11} item style={{
+        <Grid item >
+          <Grid item style={{
             paddingRight: 16
           }}>
             <TextField
@@ -71,7 +71,7 @@ export const Form = memo(() => {
               error={isEmpty}
               helperText={isEmpty ? "Enter text" : ""}
             />
-            <Grid xs={2} md={1} item>
+            <Grid item>
               <LoadingButton
                 style={{
                   width: "8%"

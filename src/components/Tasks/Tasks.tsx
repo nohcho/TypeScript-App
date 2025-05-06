@@ -126,7 +126,7 @@ export const Tasks = memo(() => {
               display: "grid",
               gap: 2
             }}
-            xs={12}
+
             item={true}
             key={elem.id}
           >
