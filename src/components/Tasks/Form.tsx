@@ -74,7 +74,8 @@ export const Form = memo(() => {
             <Grid item>
               <LoadingButton
                 style={{
-                  width: "8%"
+                  width: "8%",
+                  marginTop: "8px"
                 }}
                 type="submit"
                 variant="contained"
